@@ -1,7 +1,7 @@
 import { useState, React} from 'react'
 
-export default function LoginPage() {
- 
+export default function LoginForm() {
+
     const [name, setName] = useState("");
 
     const handleName = (e) => {
@@ -12,12 +12,9 @@ export default function LoginPage() {
     }
 
   return (
-    <div>
+    <form id="card" onSubmit={handleName}>
 
-      <h1>Bienvenue chez nous !</h1>
-
-      <form id="card" onSubmit={handleName}>
-
+        <h1>Bienvenue chez nous !</h1>
         <p className="read-the-docs">
           <label>Connectez-vous</label>
         </p>
@@ -36,9 +33,7 @@ export default function LoginPage() {
         <input 
           type="submit"
           value="Accéder à votre espace" />
-      </form>
-
-    </div>
+    </form>
   )
-  
+
 }
