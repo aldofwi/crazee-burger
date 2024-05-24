@@ -7,7 +7,11 @@ export default function LoginPage() {
     const handleName = (e) => {
         e.preventDefault();
 
+<<<<<<< HEAD
         alert("Bonjour "+name);
+=======
+        alert(`Bonjour ${name}`);
+>>>>>>> d53d00eb9d406406f59f6cbf510bf78989aae418
         setName("");
     }
 
