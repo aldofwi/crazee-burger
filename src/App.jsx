@@ -1,10 +1,15 @@
 import LoginPage from './components/pages/login/LoginPage';
+import OrderPage from './components/pages/order/OrderPage';
+import ErrorPage from './components/pages/error/ErrorPage';
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
-function App() {
+import {  Routes,
+          Route,
+          Link} from "react-router-dom"
 
+function App() {
 
   return (
     <>
@@ -17,7 +22,13 @@ function App() {
         </a>
       </div>
 
-      <LoginPage />
+        <Routes>
+
+          <Route path='/'             element={<LoginPage />} />
+          <Route path='/order/:name'  element={<OrderPage />} />
+          <Route path='*'             element={<ErrorPage />} />
+          
+        </Routes>
 
     </>
   )

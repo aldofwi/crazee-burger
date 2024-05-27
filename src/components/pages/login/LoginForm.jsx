@@ -1,14 +1,16 @@
 import { useState, React} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export default function LoginForm() {
 
     const [name, setName] = useState("");
+    const navigate = useNavigate();
 
     const handleName = (e) => {
         e.preventDefault();
 
-        alert(`Bonjour ${name}`);
         setName("");
+        navigate(`order/${name}`);
     }
 
   return (
