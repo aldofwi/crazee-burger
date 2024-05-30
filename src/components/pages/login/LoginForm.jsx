@@ -52,7 +52,6 @@ export default function LoginForm() {
 
     </LoginFormStyled>
   )
-
 }
 
 const LoginFormStyled = styled.form`
@@ -61,32 +60,31 @@ const LoginFormStyled = styled.form`
   max-width: 500px;
   min-width: 400px;
   margin: 0px auto;
-  padding: 2.5rem 2rem;
-  border-radius: 5px;
+  padding: 40px ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.round};
   font-family: "Amatic SC", cursive;
 
   hr {
-    border: 1.5px solid #f56a2c;
-    margin-bottom: 40px;
+    border: 1.5px solid ${theme.colors.loginLine};
+    margin-bottom: ${theme.gridUnit*5}px;
   }
 
   h1 {
-    color: white;
-    font-size: 48px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.P5};
   }
 
   h2 {
-    color: #8e8b8b;
     margin: 20px 10px 10px;
-    color: white;
-    font-size: 36px;
+    font-size: ${theme.fonts.P4};
+    color: ${theme.colors.white};
   }
 
   .icon {
         display: flex;
         justify-content : center;
         align-items: center;
-        font-size: 15px;
+        font-size: ${theme.fonts.P0};
         margin-left: 10px;
       }
 
