@@ -24,18 +24,21 @@ export default function LoginForm() {
         <h1>Bienvenue chez nous !</h1>
         <hr />
         <h2>Connectez-vous</h2>
-          <BsPersonCircle />
+          
         <br />
         
         <div>
-          <input
-            required
-            id="name"
-            name="name"
-            type="text"
-            value={name || ""}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Entrez votre prénom" />
+          <div className="input-with-icon">
+            <BsPersonCircle className="icon" />
+            <input
+              required
+              id="name"
+              name="name"
+              type="text"
+              value={name || ""}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Entrez votre prénom" />
+          </div>
             
           <button type="submit">Accéder à mon espace {'>'}</button>
         </div>
@@ -72,6 +75,33 @@ const LoginFormStyled = styled.div`
     color: white;
     font-size: 36px;
   }
+
+  .input-with-icon {
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    margin: 18px 0;
+
+    .icon {
+      font-size: 15px;
+      margin-right: 8px;
+      color: #93a2b1;
+    }
+
+    input {
+      border: none;
+      font-size: 15px;
+      color: #17161a;
+    }
+
+    &::placeholder {
+      background: white;
+      color: lightgrey;
+    }
+  }
+
 
   /* h1 {
     font-size: 50px;
