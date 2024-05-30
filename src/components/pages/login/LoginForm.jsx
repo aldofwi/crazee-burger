@@ -18,6 +18,7 @@ export default function LoginForm() {
     }
 
   return (
+    
     <LoginFormStyled onSubmit={handleName}>
 
         <h1>Bienvenue chez nous !</h1>
@@ -45,8 +46,8 @@ export default function LoginForm() {
 }
 
 const LoginFormStyled = styled.div`
-
   background: green;
+
   /* h1 {
     font-size: 50px;
     font-family: "Amatic SC";
