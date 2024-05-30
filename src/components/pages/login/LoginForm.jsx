@@ -1,41 +1,91 @@
 import { useState, React} from 'react'
 import { useNavigate } from 'react-router-dom';
+import { IoChevronForward } from "react-icons/io5";
+import { styled } from 'styled-components';
+import { theme } from '../theme';
+import TextInput from '../../reusable-ui/TextInput';
+import { BsPersonCircle } from 'react-icons/bs';
+import PrimaryButton from '../../reusable-ui/PrimaryButton';
+
 
 export default function LoginForm() {
 
     const [name, setName] = useState("");
     const navigate = useNavigate();
 
+    const handleSubmit = () => { 
+      navigate(`order/${name}`);
+      setName("");
+     }
+
     const handleName = (e) => {
         e.preventDefault();
 
-        setName("");
-        navigate(`order/${name}`);
+        setName(e.target.value); 
     }
 
   return (
-    <form id="card" onSubmit={handleName}>
+    
+    <LoginFormStyled action="submit" onSubmit={handleSubmit}>
 
         <h1>Bienvenue chez nous !</h1>
-        <p className="read-the-docs">
-          <label>Connectez-vous</label>
-        </p>
-        <br></br>
+        <hr />
+        <h2>Connectez-vous</h2>
+          
+        <br />
+        
+        <div>
+          <TextInput
+            value={name}
+            onChange={handleName}
+            placeholder={"Entrez votre prénom"}
+            iconBeforeInput={<BsPersonCircle className="icon" />}
+            required
+          />
 
-        <input 
-          required
-          id="name"
-          name="name" 
-          type="text"
-          value={name || ""}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Entrez votre prénom" />
-          <br></br>
+          <PrimaryButton 
+            label={"Accéder à mon espace"}
+            iconAfterButton={<IoChevronForward className="icon" />}
+          />
+            
+        </div>
 
-        <input 
-          type="submit"
-          value="Accéder à votre espace" />
-    </form>
+    </LoginFormStyled>
   )
-
 }
+
+const LoginFormStyled = styled.form`
+
+  text-align: center;
+  max-width: 500px;
+  min-width: 400px;
+  margin: 0px auto;
+  padding: 40px ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.round};
+  font-family: "Amatic SC", cursive;
+
+  hr {
+    border: 1.5px solid ${theme.colors.loginLine};
+    margin-bottom: ${theme.gridUnit*5}px;
+  }
+
+  h1 {
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.P5};
+  }
+
+  h2 {
+    margin: 20px 10px 10px;
+    font-size: ${theme.fonts.P4};
+    color: ${theme.colors.white};
+  }
+
+  .icon {
+        display: flex;
+        justify-content : center;
+        align-items: center;
+        font-size: ${theme.fonts.P0};
+        margin-left: 10px;
+      }
+
+`
