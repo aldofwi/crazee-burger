@@ -9,7 +9,7 @@ export default function OrderPage() {
 
     <div>
         <p><label>Bonjour {name}</label></p>
-    
+
         <h2>OrderPage</h2> 
 
         <Link to="/">

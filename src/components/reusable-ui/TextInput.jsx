@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 import { theme } from "../pages/theme";
 
@@ -6,7 +5,7 @@ export default function TextInput({ value, onChange, iconBeforeInput, ...extraPr
 
   return (
 
-    <InputStyled>
+    <TextInputStyled>
         {iconBeforeInput && iconBeforeInput}
         <input
             value={value}
@@ -14,13 +13,13 @@ export default function TextInput({ value, onChange, iconBeforeInput, ...extraPr
             type="text"
             {...extraProps}
          />
-    </InputStyled>
+    </TextInputStyled>
 
   )
 }
 
 // Un style propre à cet Input.
-const InputStyled = styled.div`
+const TextInputStyled = styled.div`
 
     background-color: ${theme.colors.white};
     border-radius: ${theme.borderRadius.round};

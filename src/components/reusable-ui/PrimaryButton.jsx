@@ -5,6 +5,7 @@ export default function PrimaryButton({ label, iconAfterButton }) {
   return (
     
     <PrimaryButtonStyled>
+    
         <span>{ label }</span>
         {iconAfterButton && iconAfterButton}
         
