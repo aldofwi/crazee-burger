@@ -3,31 +3,36 @@ import styled from 'styled-components'
 import Logo from '../../reusable-ui/Logo'
 import { theme } from '../theme'
 
-export default function Navbar() {
-
-    const {name} = useParams();
+export default function Navbar({ username }) {
 
   return (
 
     <NavbarStyled>
 
-        <Logo />
+        <div className="navbar">
+            Navbar
+            <h1>Hey,&nbsp; {username}</h1> ✨ 🚀
 
-        <div className="hello">
-            <p>Hey,&nbsp;</p> <p className="name"> {name}</p> ✨ 🚀
-        </div>
-        <div className="deco">
             <Link to="/">
                 <button>Se Déconnecter</button>
             </Link>
-        </div>      
+        </div>
 
     </NavbarStyled>
 
   )
 }
 
-const NavbarStyled = styled.div`
+const NavbarStyled = styled.nav`
+
+    background: blue;
+    height: 10vh;
+
+`
+
+/*
+
+<Logo />
 
     border-radius: 15px 15px 0px 0px;
     background-color: ${theme.colors.background_white};
@@ -76,4 +81,6 @@ const NavbarStyled = styled.div`
         margin-top: 2%;
         margin-right: 5%;
     }
-`
+
+
+*/

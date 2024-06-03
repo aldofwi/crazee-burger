@@ -12,6 +12,15 @@ export default function Main() {
 }
 
 const MainStyled = styled.div`
+
+  background: green;
+  flex: 1; // height: calc(95vh - 10vh);
+
+
+`
+
+/*
+
   background: #F5F5F7;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   border-radius: 0px 0px 15px 15px;
@@ -28,4 +37,5 @@ const MainStyled = styled.div`
   right: 0;
   bottom: 0;
   left: 0;
-`
+
+*/
