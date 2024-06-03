@@ -2,6 +2,7 @@ import { Link, useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import Logo from '../../reusable-ui/Logo'
 import { theme } from '../theme'
+import NavbarRightSide from './NavbarRightSide'
 
 export default function Navbar({ username }) {
 
@@ -9,16 +10,9 @@ export default function Navbar({ username }) {
 
     <NavbarStyled>
 
-    <div class="leftside">Left</div>
+        <div class="leftside">Left</div>
 
-        <div className="rightside">
-            Right
-            <h1>Hey,&nbsp; {username}</h1> ✨ 🚀
-
-            <Link to="/">
-                <button>Se Déconnecter</button>
-            </Link>
-        </div>
+        <NavbarRightSide username={username} />        
 
     </NavbarStyled>
 
@@ -35,10 +29,6 @@ const NavbarStyled = styled.nav`
 
     .leftside {
         background: pink;
-    }
-
-    .rightside {
-        background: purple;
     }
 `
 
