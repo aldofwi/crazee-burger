@@ -9,8 +9,10 @@ export default function Navbar({ username }) {
 
     <NavbarStyled>
 
-        <div className="navbar">
-            Navbar
+    <div class="leftside">Left</div>
+
+        <div className="rightside">
+            Right
             <h1>Hey,&nbsp; {username}</h1> ✨ 🚀
 
             <Link to="/">
@@ -27,7 +29,17 @@ const NavbarStyled = styled.nav`
 
     background: blue;
     height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
 
+    .leftside {
+        background: pink;
+    }
+
+    .rightside {
+        background: purple;
+    }
 `
 
 /*
