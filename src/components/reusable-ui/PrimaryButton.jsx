@@ -1,10 +1,10 @@
 import styled from "styled-components"
 import { theme } from "../pages/theme"
 
-export default function PrimaryButton({ label, iconAfterButton }) {
+export default function PrimaryButton({ label, iconAfterButton, className }) {
   return (
     
-    <PrimaryButtonStyled>
+    <PrimaryButtonStyled className={className}>
     
         <span>{ label }</span>
         {iconAfterButton && iconAfterButton}
