@@ -31,7 +31,6 @@ const ProductCardStyled = styled.div`
     width: 240px;
     background: ${theme.colors.white};
     border-radius: ${theme.borderRadius.extraRound};
-    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
     margin-bottom: 20px;
     padding: 20px 20px 20px;
 

@@ -38,7 +38,4 @@ const MainStyled = styled.div`
     background: pink;
   }  */
 
-  .menu {
-    background: purple;
-  }
 `
