@@ -15,24 +15,11 @@ export default function Menu() {
 
         {menu.map((item) => {
             return (
-                <div className="produit">
-                
-                    <div className="image">
-                        <img src={item.imageSource} alt={item.title} />
-                    </div>
-
-                    <div className="info-text">
-                        <div className="title">{item.title}</div>
-                        <div className="description">
-
-                            <div className="price">{item.price}</div>
-                            <button className="add-button">Ajouter</button>
-                            
-                        </div>
-
-                    </div>
-                    
-                </div>
+                <ProductCard className="produit"
+                    image={item.imageSource}
+                    titre={item.title}
+                    prix={formatPrice(item.price)}
+                />
             )
         })}
     
@@ -65,19 +52,13 @@ const MenuStyled = styled.div`
             img {
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
             }
         }
         
+        .description {
+            border: 1px solid fuchsia;
+        }
     }
 
 `
-
-/*
-
-<ProductCard className="produit"
-    image={item.imageSource}
-    titre={item.title}
-    prix={formatPrice(item.price)}
-/>
-
-*/

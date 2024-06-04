@@ -9,21 +9,68 @@ export default function ProductCard({ image, titre, prix }) {
 
     <ProductCardStyled>
     
+      <div className="image">
         <img src={image} alt="produit" />
+      </div>
 
-        <div class="titre-produit">{titre}</div>
+      <div className="info-text">
+        <div className="description">
 
-        <div class="prix-produit">{prix}
-          <PrimaryButton label="Ajouter" className="bouton-ajouter" />
+          <div class="titre-produit">{titre}</div>
+          <div class="prix-produit">{prix}</div>
+            <PrimaryButton label="Ajouter" className="bouton-ajouter" />
+          
         </div>
+      </div>
 
     </ProductCardStyled>
 
   )
 }
 
+/*
+              <div className="produit">
+                
+                    <div className="image">
+                        <img src={item.imageSource} alt={item.title} />
+                    </div>
+
+                    <div className="info-text">
+                        <div className="description">
+
+                            <div className="title">{item.title}</div>
+                            <div className="price">{item.price}</div>
+                            <button className="add-button">Ajouter</button>
+
+                        </div>
+                    </div>
+                    
+                </div>
+*/
+
 const ProductCardStyled = styled.div`
 
+    background: red;
+    width: 240px;
+    height: 330px;
+
+    .image {
+        border: 1px solid fuchsia;
+        width: 100px;
+        height: auto;
+        
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+    
+    .description {
+        border: 1px solid fuchsia;
+    }     
+
+/* 
     display: grid;
     align-items: center;
     justify-content: center;
@@ -60,6 +107,7 @@ const ProductCardStyled = styled.div`
 
     .bouton-ajouter {
       width: 60%;
-    }
+    } 
+*/
 
 `
