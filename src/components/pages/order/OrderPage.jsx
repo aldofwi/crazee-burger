@@ -33,11 +33,12 @@ const OrderPageStyled = styled.div`
   align-items: center;
 
   .container {
-    background: red;
+    //background: red;
     height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;
+    padding: 0 10px 0 10px;
     border-radius: ${theme.borderRadius.extraRound};
 
   }
