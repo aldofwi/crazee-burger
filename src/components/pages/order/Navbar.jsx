@@ -21,13 +21,14 @@ export default function Navbar({ username }) {
 
 const NavbarStyled = styled.nav`
 
-    background: blue;
+    background: ${theme.colors.white};
     height: 10vh;
     display: flex;
     justify-content: space-between;
-    // align-items: center;
     padding: 0 20px;
-
+    border-top-left-radius: ${theme.borderRadius.extraRound};
+    border-top-right-radius: ${theme.borderRadius.extraRound};
+    // align-items: center;
 `
 
 /*
