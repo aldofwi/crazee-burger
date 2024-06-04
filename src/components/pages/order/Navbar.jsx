@@ -10,7 +10,7 @@ export default function Navbar({ username }) {
 
     <NavbarStyled>
 
-        <div class="leftside">Left</div>
+        <Logo />
 
         <NavbarRightSide username={username} />        
 
@@ -26,10 +26,8 @@ const NavbarStyled = styled.nav`
     display: flex;
     justify-content: space-between;
     // align-items: center;
+    padding: 0 20px;
 
-    .leftside {
-        background: pink;
-    }
 `
 
 /*
