@@ -29,13 +29,4 @@ const MainStyled = styled.div`
   grid-template-columns: 1fr;
 
   overflow-y: scroll;
-
-  /* 
-  <div class="basket">Basket</div>
-  grid-template-columns: 25% 1fr;
-
-  .basket {
-    background: pink;
-  }  */
-
 `

@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { fakeMenu1, fakeMenu2 } from '../../../../fakeData/fakeMenu'
+import ProductCard from '../../../reusable-ui/ProductCard';
 import { formatPrice } from '../../../../utils/maths';
 import { theme } from '../../theme';
-import ProductCard from '../../../reusable-ui/ProductCard';
 
 export default function Menu() {
 

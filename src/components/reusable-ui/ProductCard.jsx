@@ -98,10 +98,15 @@ const ProductCardStyled = styled.div`
               font-size: ${theme.fonts.size.P1};
 
               .primary-button {
-                margin-left: 70px;
+                margin-left: 50px;
                 font-size: ${theme.fonts.size.XS};
                 cursor: pointer;
                 padding: 12px;
+
+                span {
+                  margin-right: ${theme.spacing.sm};
+                  margin-left: ${theme.spacing.sm};
+                }
               }
             }
 
