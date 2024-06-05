@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { fakeMenu2 } from '../../../../fakeData/fakeMenu'
+import { fakeMenu1, fakeMenu2 } from '../../../../fakeData/fakeMenu'
 import { formatPrice } from '../../../../utils/maths';
 import { theme } from '../../theme';
 import ProductCard from '../ProductCard';
 
 export default function Menu() {
 
-    const [menu, setMenu] = useState(fakeMenu2);
+    const [menu, setMenu] = useState(fakeMenu1);
 
   return (
 
@@ -20,6 +20,7 @@ export default function Menu() {
                     titre={item.title}
                     prix={formatPrice(item.price)}
                 />
+
             )
         })}
     
@@ -27,6 +28,8 @@ export default function Menu() {
 
   )
 }
+
+// <ProductCard {...item} />
 
 const MenuStyled = styled.div`
 
@@ -38,27 +41,5 @@ const MenuStyled = styled.div`
     justify-items: center;
 
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
-
-    .produit {
-        background: red;
-        width: 240px;
-        height: 330px;
-
-        .image {
-            border: 1px solid fuchsia;
-            width: 100px;
-            height: auto;
-            
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-        
-        .description {
-            border: 1px solid fuchsia;
-        }
-    }
 
 `

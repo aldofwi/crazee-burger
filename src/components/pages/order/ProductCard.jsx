@@ -16,9 +16,11 @@ export default function ProductCard({ image, titre, prix }) {
       <div className="info-text">
         <div className="description">
 
-          <div class="titre-produit">{titre}</div>
-          <div class="prix-produit">{prix}</div>
+          <div className="titre-produit">{titre}</div>
+          <div className="prix-produit">{prix}</div>
+          <div className="add-button">
             <PrimaryButton label="Ajouter" className="bouton-ajouter" />
+          </div>
           
         </div>
       </div>
@@ -28,46 +30,31 @@ export default function ProductCard({ image, titre, prix }) {
   )
 }
 
-/*
-              <div className="produit">
-                
-                    <div className="image">
-                        <img src={item.imageSource} alt={item.title} />
-                    </div>
-
-                    <div className="info-text">
-                        <div className="description">
-
-                            <div className="title">{item.title}</div>
-                            <div className="price">{item.price}</div>
-                            <button className="add-button">Ajouter</button>
-
-                        </div>
-                    </div>
-                    
-                </div>
-*/
-
 const ProductCardStyled = styled.div`
 
     background: red;
-    width: 240px;
-    height: 330px;
+    width: 200px;
+    height: 300px;
+    display: grid;
+    grid-template-rows: 65% 1fr;
+    padding: 20px;
+    padding-bottom: 10px;
 
     .image {
-        border: 1px solid fuchsia;
-        width: 100px;
+        border: 1px solid yellow;
+        width: 100%;
         height: auto;
+        margin-top: 30px;
         
         img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            object-fit: contain;
         }
     }
     
     .description {
-        border: 1px solid fuchsia;
+        border: 1px solid blue;
     }     
 
 /* 
