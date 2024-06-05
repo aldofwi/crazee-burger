@@ -13,13 +13,13 @@ export default function Menu() {
 
     <MenuStyled>
 
-        {menu.map((item) => {
+        {menu.map(({id, imageSource, title, price}) => {
             return (
                 <ProductCard
-                    key={item.id}
-                    title={item.title}
-                    imageSource={item.imageSource}
-                    leftDescription={formatPrice(item.price)}
+                    key={id}
+                    title={title}
+                    imageSource={imageSource}
+                    leftDescription={formatPrice(price)}
                 />
 
             )
