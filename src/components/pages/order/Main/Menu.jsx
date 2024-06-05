@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import { fakeMenu1, fakeMenu2 } from '../../../../fakeData/fakeMenu'
 import { formatPrice } from '../../../../utils/maths';
 import { theme } from '../../theme';
-import ProductCard from '../ProductCard';
+import ProductCard from '../../../reusable-ui/ProductCard';
 
 export default function Menu() {
 
-    const [menu, setMenu] = useState(fakeMenu1);
+    const [menu, setMenu] = useState(fakeMenu2);
 
   return (
 
@@ -15,10 +15,11 @@ export default function Menu() {
 
         {menu.map((item) => {
             return (
-                <ProductCard className="produit"
-                    image={item.imageSource}
-                    titre={item.title}
-                    prix={formatPrice(item.price)}
+                <ProductCard
+                    key={item.id}
+                    title={item.title}
+                    imageSource={item.imageSource}
+                    leftDescription={formatPrice(item.price)}
                 />
 
             )
