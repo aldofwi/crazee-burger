@@ -65,7 +65,7 @@ const LoginFormStyled = styled.form`
   font-family: "Amatic SC", cursive;
 
   hr {
-    border: 1.5px solid ${theme.colors.loginLine};
+    border: 1.5px solid ${theme.colors.primary_burger};
     margin-bottom: ${theme.gridUnit*5}px;
   }
 
