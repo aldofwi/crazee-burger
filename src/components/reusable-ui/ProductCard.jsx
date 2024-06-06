@@ -98,7 +98,7 @@ const ProductCardStyled = styled.div`
               font-size: ${theme.fonts.size.P1};
 
               .primary-button {
-                margin-left: 50px;
+                margin-left: 48px;
                 font-size: ${theme.fonts.size.XS};
                 cursor: pointer;
                 padding: 12px;
