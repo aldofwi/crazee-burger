@@ -7,7 +7,7 @@ export default function AdminPanel() {
 
     <AdminPanelStyled>
     
-      AdminPanel
+      
       
     </AdminPanelStyled>
     
