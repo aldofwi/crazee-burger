@@ -34,13 +34,16 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
 
+    // border: 1px solid green;
     background: ${theme.colors.background_white};
     display: grid;
     grid-row-gap: 60px;
-    grid-template-columns: repeat(4, 1fr);
+    // grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     padding: 50px 50px 150px;
     justify-items: center;
 
     box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    overflow-y: scroll;
 
 `
