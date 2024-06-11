@@ -1,11 +1,11 @@
 import ToggleButton from "../../../reusable-ui/ToggleButton"
+import OrderContext from "/src/context/OrderContext";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 import styled from "styled-components"
 import Profile from "./Profile"
 import ToastAdmin from "./ToastAdmin";
 import { useContext } from "react";
-import OrderContext from "../../../../context/OrderContext";
 
 export default function NavbarRightSide() {
 
@@ -49,14 +49,6 @@ export default function NavbarRightSide() {
 
   )
 }
-
-/* 
-
-          className="toaster"
-          bodyClassName="body-toast"
-
-      <div className="admin-button">Admin Button</div> 
-*/
 
 const NavbarRightSideStyled = styled.nav`
 
