@@ -43,7 +43,7 @@ const MenuStyled = styled.div`
     padding: 50px 50px 150px;
     justify-items: center;
 
-    box-shadow: -8px 8px 20px 0px rgb(0 0 0 / 20%);
+    box-shadow: ${theme.shadows.medium};
     overflow-y: scroll;
 
 `
