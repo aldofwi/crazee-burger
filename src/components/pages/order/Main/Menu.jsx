@@ -26,7 +26,6 @@ export default function Menu() {
         })}
     
     </MenuStyled>
-
   )
 }
 
@@ -34,16 +33,18 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
 
-    // border: 1px solid green;
-    background: ${theme.colors.background_white};
     display: grid;
     grid-row-gap: 60px;
-    // grid-template-columns: repeat(4, 1fr);
+
+    background: ${theme.colors.background_white};
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    padding: 50px 50px 150px;
-    justify-items: center;
 
     box-shadow: ${theme.shadows.medium};
-    overflow-y: scroll;
 
+    padding: 50px 50px 150px;
+    justify-items: center;
+    overflow-y: scroll;
 `
+
+    // grid-template-columns: repeat(4, 1fr);
+    // border: 1px solid green;

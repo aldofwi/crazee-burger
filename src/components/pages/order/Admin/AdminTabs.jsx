@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Tab from "../../../reusable-ui/Tab"
 import OrderContext from "/src/context/OrderContext"
 import {FiChevronDown, FiChevronUp} from "react-icons/fi"
-import { getTabsConfig } from "./getTabsConfig"
+import { tabsConfig } from "./tabsConfig"
 
 export default function AdminTabs() {
 
@@ -19,7 +19,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected); // sélectionne moi la tab sélectionnée
   }
 
-  const tabs = getTabsConfig();
+  const tabs = tabsConfig;
 
   return (
 
@@ -35,6 +35,7 @@ export default function AdminTabs() {
         {tabs.map((tab) => {
           return( 
             <Tab 
+                key={tab.index}
                 label={tab.label}
                 Icon={tab.Icon}
                 onClick={() => selectTab(tab.index)}

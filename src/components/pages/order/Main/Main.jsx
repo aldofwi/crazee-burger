@@ -29,7 +29,7 @@ const MainStyled = styled.div`
 
   background: ${theme.colors.background_white};
   height: calc(95vh - 10vh); // Hauteur Main - Hauteur Navbar
-  // flex: 1; 
+  flex: 1; 
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.strong};
@@ -39,6 +39,7 @@ const MainStyled = styled.div`
 
   /* .basket {
     background: pink;
+    border: 1px solid black;
   } */
 
   // position absolte va être relatif 
