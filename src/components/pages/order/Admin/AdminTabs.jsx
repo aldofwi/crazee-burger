@@ -19,29 +19,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected); // sélectionne moi la tab sélectionnée
   }
 
-  const tabs = getTabsConfig(currentTabSelected);
-
-  //  const tabsConfig = [
-    // {
-    //   index: "chevronUpDown",
-    //   label: "",
-    //   Icon: isCollapsed ? <FiChevronUp /> : <FiChevronDown />,
-    //   onClick: () => setIsCollapsed(!isCollapsed),
-    //   className: isCollapsed ? "is-active" : "",
-    // }, 
-  //   {
-  //     index: "add",
-  //     label: "Ajouter un produit",
-  //     Icon: <AiOutlinePlus />,
-  //     className: currentTabSelected === "add" ? "is-active" : "",
-  //   }, 
-  //   {
-  //     index: "edit",
-  //     label: "Modifier un produit",
-  //     Icon: <MdModeEditOutline />,
-  //     className: currentTabSelected === "edit" ? "is-active" : "",
-  //   },  
-  //  ];
+  const tabs = getTabsConfig();
 
   return (
 
@@ -60,7 +38,7 @@ export default function AdminTabs() {
                 label={tab.label}
                 Icon={tab.Icon}
                 onClick={() => selectTab(tab.index)}
-                className={tab.className}
+                className={currentTabSelected === tab.index ? "is-active" : ""}
             />)
         })}
     
