@@ -1,6 +1,6 @@
 import { useState, React} from 'react'
 import { useNavigate } from 'react-router-dom';
-import { IoChevronForward } from "react-icons/io5";
+import { IoChevronForward } from 'react-icons/io5';
 import { BsPersonCircle } from 'react-icons/bs';
 import { styled } from 'styled-components';
 import { theme } from '../theme';
@@ -84,7 +84,7 @@ const LoginFormStyled = styled.form`
         display: flex;
         justify-content : center;
         align-items: center;
-        font-size: ${theme.fonts.P0};
+        font-size: ${theme.fonts.SM};
         margin-left: 10px;
       }
 
