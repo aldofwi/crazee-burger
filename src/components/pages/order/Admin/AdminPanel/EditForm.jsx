@@ -1,7 +1,13 @@
-import React from 'react'
+import styled from "styled-components"
 
 export default function EditForm() {
   return (
-    <div>EditForm</div>
+    <EditFormStyled>EditForm</EditFormStyled>
   )
 }
+
+const EditFormStyled = styled.form`
+
+
+
+`
