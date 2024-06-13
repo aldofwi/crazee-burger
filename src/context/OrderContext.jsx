@@ -10,4 +10,8 @@ export default createContext({
 
     currentTabSelected: "",
     setCurrentTabSelected: () => {},
+
+    menu: [],
+    setMenu: () => {},
+    handleAdd: () => {},
 });

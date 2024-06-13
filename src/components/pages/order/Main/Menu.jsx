@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { fakeMenu } from '../../../../fakeData/fakeMenu'
 import ProductCard from '../../../reusable-ui/ProductCard';
 import { formatPrice } from '../../../../utils/maths';
 import { theme } from '../../theme';
+import { useContext } from 'react';
+import OrderContext from '/src/context/OrderContext';
 
 export default function Menu() {
 
-    const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+    const { menu } = useContext(OrderContext);
 
   return (
 
