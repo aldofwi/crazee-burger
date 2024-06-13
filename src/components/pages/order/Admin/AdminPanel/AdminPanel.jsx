@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import { theme } from '../../theme'
+import { theme } from '../../../theme'
 import styled from "styled-components"
 import OrderContext from "/src/context/OrderContext";
-import { tabsConfig, getTabSelected } from "./tabsConfig";
+import { tabsConfig, getTabSelected } from "../tabsConfig";
 
 export default function AdminPanel() {
 
@@ -15,7 +15,7 @@ export default function AdminPanel() {
 
     <AdminPanelStyled>
     
-      {tabSelected && tabSelected.label}
+      {tabSelected && tabSelected.Content}
       
     </AdminPanelStyled>
     
