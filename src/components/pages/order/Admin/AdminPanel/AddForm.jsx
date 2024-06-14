@@ -1,32 +1,60 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import styled from "styled-components"
 import OrderContext from '/src/context/OrderContext';
 
 export default function AddForm() {
 
-  const { handleAdd } = useContext(OrderContext);
+  const EMPTY_PRODUCT = {
+    id: "",
+    title: "",
+    imageSource: "",
+    price: 0,
+  };
 
-  const newProduit = {
-    id: new Date().getTime(),
-    title: "Nouveau Produit",
-    imageSource: "/public/images/coming-soon.png",
-    price: 2.5,
-  }
+  const { handleAdd } = useContext(OrderContext);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   const handleSubmit = (event) => { 
     event.preventDefault(); // No Reload
-    handleAdd(newProduit);
-   }
+
+      const newProduitToAdd = {
+        ...newProduct,
+        id: crypto.randomUUID(),
+      }
+    handleAdd(newProduitToAdd);
+  }
+
+  const handleChange = (event) => { 
+    const name = event.target.name;
+    const newValue = event.target.value;
+
+    setNewProduct({ ...newProduct, [name]: newValue });
+  }
 
   return (
 
     <AddFormStyled onSubmit={handleSubmit}>
     
-      <div className="image-preview">Image Preview</div>
+      <div className="image-preview">Aucune Image</div>
       <div className="input-fields">
-        <input type="text" placeholder="Nom" />
-        <input type="text" placeholder="Image URL" />
-        <input type="text" placeholder="Price" />
+        <input
+          name="title" 
+          type="text" 
+          value={newProduct.title} 
+          onChange={handleChange}
+          placeholder="Nom" />
+        <input
+          name="imageSource" 
+          type="text" 
+          value={newProduct.imageSource} 
+          onChange={handleChange}
+          placeholder="Image URL" />
+        <input
+          name="price" 
+          type="text" 
+          value={newProduct.price ? newProduct.price : ""} 
+          onChange={handleChange}
+          placeholder="Price" />
       </div>
       <button className="submit-button">Submit Button</button>
     
