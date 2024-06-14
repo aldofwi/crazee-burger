@@ -6,6 +6,8 @@ import { theme } from '../../theme';
 import { useContext } from 'react';
 import OrderContext from '/src/context/OrderContext';
 
+const DEFAULT_IMAGE = "/public/images/coming-soon.png";
+
 export default function Menu() {
 
     const { menu } = useContext(OrderContext);
@@ -19,7 +21,7 @@ export default function Menu() {
                 <ProductCard
                     key={id}
                     title={title}
-                    imageSource={imageSource}
+                    imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
                     leftDescription={formatPrice(price)}
                 />
 
