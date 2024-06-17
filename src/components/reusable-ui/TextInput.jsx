@@ -6,7 +6,7 @@ export default function TextInput({ value, onChange, iconBeforeInput, ...extraPr
   return (
 
     <TextInputStyled>
-        {iconBeforeInput && iconBeforeInput}
+        <div className="icon">{iconBeforeInput && iconBeforeInput}</div>
         <input
             value={value}
             onChange={onChange}
@@ -29,8 +29,12 @@ const TextInputStyled = styled.div`
     margin: 18px 0;
 
     .icon {
-      font-size: ${theme.fonts.SM};
+      display: flex;
+      justify-content : center;
+      align-items: center;
       margin-right: 8px;
+      margin-left: 10px;
+      font-size: ${theme.fonts.SM};
       color: ${theme.colors.greySemiDark};
     }
 

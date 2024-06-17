@@ -7,7 +7,7 @@ export default function PrimaryButton({ label, iconAfterButton, className }) {
     <PrimaryButtonStyled className={className}>
     
         <span>{ label }</span>
-        {iconAfterButton && iconAfterButton}
+        <div className="icon">{iconAfterButton && iconAfterButton}</div>
         
     </PrimaryButtonStyled>
 
@@ -71,5 +71,13 @@ const PrimaryButtonStyled = styled.button`
           background-color: ${theme.colors.white};
           color: ${theme.colors.primary};
         }
+      }
+
+      .icon {
+        display: flex;
+        justify-content : center;
+        align-items: center;
+        font-size: ${theme.fonts.SM};
+        margin-left: 10px;
       }
 `
