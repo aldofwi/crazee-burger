@@ -13,14 +13,23 @@ export default function OrderPage() {
   const [isCollapsed, setIsCollapsed]       = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
 
-  const handleAdd = (newProduit) => { 
+  const handleAdd = (newProduct) => { 
       // 1. copy du menu
       const menuCopy = [...menu];
       // 2. manip de la copie du tableau
-      const menuUpdated = [newProduit, ...menuCopy];
+      const menuUpdated = [newProduct, ...menuCopy];
       // 3. update du statut
       setMenu(menuUpdated);
   }
+
+  const handleDelete = (idOfDeleteProduct) => { 
+    // 1. copy du menu
+    const menuCopy = [...menu];
+    // 2. manip de la copie du tableau
+    const menuUpdated = menuCopy.filter((product) => product.id !== idOfDeleteProduct);
+    // 3. update du statut
+    setMenu(menuUpdated);
+ }
 
   const orderContextValue = {
     isModeAdmin,
@@ -31,6 +40,7 @@ export default function OrderPage() {
     setCurrentTabSelected,
     menu,
     handleAdd,
+    handleDelete
   }
 
   return (

@@ -3,17 +3,20 @@ import PrimaryButton from './PrimaryButton'
 import { TiDelete } from 'react-icons/ti';
 import { theme } from '../pages/theme'
 
-export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton}) {
+export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton, onDelete}) {
 
   return (
 
     <ProductCardStyled>
 
     {hasDeleteButton && 
-      <button className="delete-button"><TiDelete className="icon" /></button>
+      <button 
+        className="delete-button" 
+        aria-label="delete-button" 
+        onClick={onDelete}><TiDelete className="icon" /></button>
     }
         
-      <div className="image" aria-label="delete-button">
+      <div className="image">
         <img src={imageSource} alt={title} />
       </div>
 
