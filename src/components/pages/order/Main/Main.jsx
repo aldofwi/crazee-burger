@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import OrderContext from '/src/context/OrderContext';
 import { theme } from '../../theme'
 import Admin from '../Admin/Admin'
-import Menu from '../Main/Menu'
+import Menu from '../Menu/Menu'
 
 export default function Main() {
 
-  const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext);
+  const {isModeAdmin} = useContext(OrderContext);
 
   return (
 

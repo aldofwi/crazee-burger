@@ -4,22 +4,24 @@ import ProductCard from '../../../reusable-ui/ProductCard';
 import { formatPrice } from '../../../../utils/maths';
 import { theme } from '../../theme';
 import { useContext } from 'react';
-import { fakeMenu } from '/src/fakeData/fakeMenu'
 import OrderContext from '/src/context/OrderContext';
+import EmptyMenuAdmin from './EmptyMenuAdmin';
+import EmptyMenuClient from './EmptyMenuClient';
 
 const DEFAULT_IMAGE = "/public/images/coming-soon.png";
 
 export default function Menu() {
 
+    // States
     const { menu, handleDelete, resetMenu, isModeAdmin } = useContext(OrderContext);
 
+    // Comportements
 
-    if(menu.length === 0) return <div>
-        <span>Pas de Produit</span>
-        <button onClick={resetMenu}>Générer de nouveaux produits</button>
-    </div>
-
-
+    // Affichage
+    if(menu.length === 0) {
+        if(!isModeAdmin) return <EmptyMenuClient />
+        return <EmptyMenuAdmin onReset={resetMenu} />
+    }
 
   return (
 
