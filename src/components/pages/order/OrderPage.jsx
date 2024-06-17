@@ -8,7 +8,7 @@ import OrderContext from '/src/context/OrderContext';
 
 export default function OrderPage() {
 
-  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [menu, setMenu] = useState(fakeMenu.EMPTY);
   const [isModeAdmin, setIsModeAdmin]       = useState(true);
   const [isCollapsed, setIsCollapsed]       = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
@@ -31,6 +31,10 @@ export default function OrderPage() {
     setMenu(menuUpdated);
  }
 
+ const resetMenu = () => { 
+  setMenu(fakeMenu.SMALL);
+}
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -39,6 +43,7 @@ export default function OrderPage() {
     currentTabSelected, 
     setCurrentTabSelected,
     menu,
+    resetMenu,
     handleAdd,
     handleDelete
   }
