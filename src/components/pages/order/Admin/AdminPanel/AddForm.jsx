@@ -2,6 +2,9 @@ import { useContext, useState } from "react";
 import styled from "styled-components"
 import OrderContext from '/src/context/OrderContext';
 import { FiCheck } from "react-icons/fi"
+import { FaHamburger } from "react-icons/fa"
+import { MdOutlineEuro } from "react-icons/md"
+import { BsFillCameraFill } from "react-icons/bs"
 
 export default function AddForm() {
 
@@ -67,7 +70,7 @@ export default function AddForm() {
           type="text" 
           value={newProduct.imageSource} 
           onChange={handleChange}
-          placeholder="Lien d'URL d'une image" />
+          placeholder="Lien d'URL d'une image" ></input>
         <input
           name="price" 
           type="text" 
@@ -90,6 +93,8 @@ export default function AddForm() {
     </AddFormStyled>
   )
 }
+
+// FaHamburger, BsFillCameraFill, MdOutlineEuro
 
 const AddFormStyled = styled.form`
 
