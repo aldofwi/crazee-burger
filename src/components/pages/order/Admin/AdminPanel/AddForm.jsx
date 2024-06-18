@@ -54,42 +54,15 @@ export default function AddForm() {
       <ImagePreview newProduct={newProduct} />
 
       <div className="input-fields">
-
         { inputTexts.map(input => 
           <TextInput
+              key={input.id}
               {...input} // Déstructuration de nos inputs.
               onChange={handleChange}
               version="minimalist"
           />) }
-
-        {/* <TextInput
-          name="title" 
-          type="text" 
-          value={newProduct.title} 
-          onChange={handleChange}
-          placeholder="Nom du produit (ex: Beacon Beast)"
-          iconBeforeInput={<FaHamburger />}
-          version="minimalist"
-        />
-        <TextInput
-          name="imageSource" 
-          type="text" 
-          value={newProduct.imageSource} 
-          onChange={handleChange}
-          placeholder="Lien URL d'une image"
-          iconBeforeInput={<BsFillCameraFill />}
-          version="minimalist"
-        />
-        <TextInput
-          name="price" 
-          type="text" 
-          value={newProduct.price ? newProduct.price : ""} 
-          onChange={handleChange}
-          placeholder="Prix du produit"
-          iconBeforeInput={<MdOutlineEuro />}
-          version="minimalist"
-        /> */}
       </div>
+      
       <div className="submit">  
         <Button
           className="submit"
