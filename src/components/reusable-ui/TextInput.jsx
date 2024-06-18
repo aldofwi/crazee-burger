@@ -43,8 +43,8 @@ const TextInputStyled = styled.div`
       }
     }
 
-    ${(props) => (props.version === "normal" && extraNormalStyle)};
-    ${(props) => (props.version === "minimalist" && extraMinimalistStyle)};
+    // Notion de Dictionnaire via props destructurées.
+    ${({ version }) => extraStyle[version]}
 `
 
 const extraNormalStyle = css`
@@ -75,3 +75,8 @@ const extraMinimalistStyle = css`
     }
   }
 `
+
+const extraStyle = {
+  normal: extraNormalStyle,
+  minimalist: extraMinimalistStyle,
+}

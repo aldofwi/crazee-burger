@@ -6,7 +6,7 @@ import { FiCheck } from "react-icons/fi"
 import { FaHamburger } from "react-icons/fa"
 import { MdOutlineEuro } from "react-icons/md"
 import { BsFillCameraFill } from "react-icons/bs"
-import TextInput from "/src/components/reusable-ui/TextInput";
+import TextInput from "../../../../reusable-ui/TextInput";
 
 export default function AddForm() {
 
@@ -103,8 +103,6 @@ export default function AddForm() {
     </AddFormStyled>
   )
 }
-
-// FaHamburger, BsFillCameraFill, MdOutlineEuro
 
 const AddFormStyled = styled.form`
 
