@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { theme } from '../../../theme'
+import { theme } from '/src/components/pages/theme'
 import styled from "styled-components"
 import OrderContext from "/src/context/OrderContext";
 import { tabsConfig, getTabSelected } from "../tabsConfig";

@@ -1,12 +1,11 @@
-import React, { useState } from 'react'
-import styled from 'styled-components'
-import ProductCard from '../../../reusable-ui/ProductCard';
-import { formatPrice } from '../../../../utils/maths';
-import { theme } from '../../theme';
+import styled from 'styled-components';
+import { theme } from '/src/components/pages/theme';
 import { useContext } from 'react';
-import OrderContext from '/src/context/OrderContext';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
+import { formatPrice } from '/src/utils/maths';
 import EmptyMenuClient from './EmptyMenuClient';
+import OrderContext from '/src/context/OrderContext';
+import ProductCard from '/src/components/reusable-ui/ProductCard';
 
 const DEFAULT_TITLE = "NEW PRODUCT";
 const DEFAULT_IMAGE = "/public/images/coming-soon.png";

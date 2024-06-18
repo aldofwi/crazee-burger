@@ -1,11 +1,11 @@
 import { useContext, useState } from "react";
-import OrderContext from '/src/context/OrderContext';
-import styled from "styled-components"
-import TextInput from "../../../../reusable-ui/TextInput";
-import Button from "../../../../reusable-ui/Button";
-import ImagePreview from "/src/components/pages/order/Admin/AdminPanel/ImagePreview"
+import styled from "styled-components";
+import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
+import OrderContext from '/src/context/OrderContext';
+import Button from "/src/components/reusable-ui/Button";
 import { getInputTextsConfig } from "./inputTextConfig";
+import TextInput from "/src/components/reusable-ui/TextInput";
 
 export default function AddForm() {
 

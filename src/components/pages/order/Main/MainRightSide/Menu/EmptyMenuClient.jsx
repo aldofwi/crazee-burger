@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "../../theme"
+import { theme } from "/src/components/pages/theme"
 
 export default function EmptyMenuClient() {
   return (
