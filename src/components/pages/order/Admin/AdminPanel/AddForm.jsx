@@ -1,13 +1,11 @@
 import { useContext, useState } from "react";
 import OrderContext from '/src/context/OrderContext';
 import styled from "styled-components"
-import { theme } from '../../../theme'
-import { FiCheck } from "react-icons/fi"
-import { FaHamburger } from "react-icons/fa"
-import { MdOutlineEuro } from "react-icons/md"
-import { BsFillCameraFill } from "react-icons/bs"
 import TextInput from "../../../../reusable-ui/TextInput";
 import Button from "../../../../reusable-ui/Button";
+import ImagePreview from "/src/components/pages/order/Admin/AdminPanel/ImagePreview"
+import SubmitMessage from "./SubmitMessage";
+import { getInputTextsConfig } from "./inputTextConfig";
 
 export default function AddForm() {
 
@@ -18,8 +16,7 @@ export default function AddForm() {
     price: 0,
   };
 
-  const { handleAdd } = useContext(OrderContext);
-  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
+  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleSubmit = (event) => { 
@@ -46,23 +43,26 @@ export default function AddForm() {
     setTimeout(() => {
       setIsSubmitted(false);
     }, 2000);
-   }
+  }
+
+  const inputTexts = getInputTextsConfig(newProduct);
 
   return (
 
     <AddFormStyled onSubmit={handleSubmit}>
     
-      <div className="image-preview">
-        {
-          newProduct.imageSource ?
-        <img src={newProduct.imageSource} alt={newProduct.title} />
-                :
-        <div className="empty-image">Aucune Image</div>
-        }
-      </div>
+      <ImagePreview newProduct={newProduct} />
 
       <div className="input-fields">
-        <TextInput
+
+        { inputTexts.map(input => 
+          <TextInput
+              {...input} // Déstructuration de nos inputs.
+              onChange={handleChange}
+              version="minimalist"
+          />) }
+
+        {/* <TextInput
           name="title" 
           type="text" 
           value={newProduct.title} 
@@ -88,7 +88,7 @@ export default function AddForm() {
           placeholder="Prix du produit"
           iconBeforeInput={<MdOutlineEuro />}
           version="minimalist"
-        />
+        /> */}
       </div>
       <div className="submit">  
         <Button
@@ -96,13 +96,7 @@ export default function AddForm() {
           label={"Ajouter un nouveau produit au menu"}
           version="success"
         />
-
-          {isSubmitted && (
-            <div className="submit-message">
-            <FiCheck className="icon" />
-              <span className="message">Ajouté avec succès !</span>
-            </div>
-          )}
+        {isSubmitted && <SubmitMessage />}
       </div>
 
     </AddFormStyled>
@@ -118,33 +112,6 @@ const AddFormStyled = styled.form`
   width: 70%;
   grid-column-gap: 20px;
   grid-row-gap: 8px;
-
-  .image-preview {
-    
-    grid-area: 1 / 1 / 4 / 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-
-    .empty-image {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid ${theme.colors.greyLight};
-      line-height: 1.5;
-      color: ${theme.colors.greySemiDark};
-      border-radius: ${theme.borderRadius.round};
-    }
-  }
 
   .input-fields {
     grid-area: 1 / 2 / -2 / 3;
@@ -162,29 +129,6 @@ const AddFormStyled = styled.form`
     .submit-button {
       width: 50%;
     } 
-
-    .submit-message {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-left: 5px;
-
-      .icon {
-        color: ${theme.colors.success};
-        margin-left: 10px;
-        width: 1em;
-        height: 1em;
-        border: 1px solid ${theme.colors.success};
-        border-radius: 50%;
-        vertical-align: middle;
-      }
-
-      .message {
-        margin-left: 5px;
-        font-size: ${theme.fonts.size.SM};
-        color: ${theme.colors.success};
-      }
-    }
   }
 `
 

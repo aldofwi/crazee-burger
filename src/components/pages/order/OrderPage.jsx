@@ -8,9 +8,17 @@ import OrderContext from '/src/context/OrderContext';
 
 export default function OrderPage() {
 
+  const EMPTY_PRODUCT = {
+    id: "",
+    title: "",
+    imageSource: "",
+    price: 0,
+  };
+
   const [menu, setMenu] = useState(fakeMenu.EMPTY);
-  const [isModeAdmin, setIsModeAdmin]       = useState(true);
-  const [isCollapsed, setIsCollapsed]       = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [newProduct, setNewProduct]   = useState(EMPTY_PRODUCT);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
 
   const handleAdd = (newProduct) => { 
@@ -45,7 +53,9 @@ export default function OrderPage() {
     menu,
     resetMenu,
     handleAdd,
-    handleDelete
+    handleDelete,
+    newProduct, 
+    setNewProduct
   }
 
   return (

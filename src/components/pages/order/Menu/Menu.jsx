@@ -16,6 +16,7 @@ export default function Menu() {
     // States
     const { menu, handleDelete, resetMenu, isModeAdmin } = useContext(OrderContext);
 
+
     // Comportements
 
     // Affichage
