@@ -67,7 +67,7 @@ export default function AddForm() {
           type="text" 
           value={newProduct.title} 
           onChange={handleChange}
-          placeholder="Nom du produit (ex: Super Burger)"
+          placeholder="Nom du produit (ex: Beacon Beast)"
           iconBeforeInput={<FaHamburger />}
           version="minimalist"
         />
@@ -76,7 +76,7 @@ export default function AddForm() {
           type="text" 
           value={newProduct.imageSource} 
           onChange={handleChange}
-          placeholder="Lien d'URL d'une image"
+          placeholder="Lien URL d'une image"
           iconBeforeInput={<BsFillCameraFill />}
           version="minimalist"
         />
@@ -99,8 +99,8 @@ export default function AddForm() {
 
           {isSubmitted && (
             <div className="submit-message">
-            <FiCheck />
-              <span>Ajouté avec succès !</span>
+            <FiCheck className="icon" />
+              <span className="message">Ajouté avec succès !</span>
             </div>
           )}
       </div>
@@ -156,13 +156,34 @@ const AddFormStyled = styled.form`
     grid-area: 4 / 2 / -1 / -1;
     display: flex;
     align-items: center;
+    position: relative;
+    top: 3px;
 
     .submit-button {
       width: 50%;
     } 
 
     .submit-message {
-      border: 1px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 5px;
+
+      .icon {
+        color: ${theme.colors.success};
+        margin-left: 10px;
+        width: 1em;
+        height: 1em;
+        border: 1px solid ${theme.colors.success};
+        border-radius: 50%;
+        vertical-align: middle;
+      }
+
+      .message {
+        margin-left: 5px;
+        font-size: ${theme.fonts.size.SM};
+        color: ${theme.colors.success};
+      }
     }
   }
 `

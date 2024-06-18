@@ -8,6 +8,7 @@ import OrderContext from '/src/context/OrderContext';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import EmptyMenuClient from './EmptyMenuClient';
 
+const DEFAULT_TITLE = "NEW PRODUCT";
 const DEFAULT_IMAGE = "/public/images/coming-soon.png";
 
 export default function Menu() {
@@ -31,7 +32,7 @@ export default function Menu() {
             return (
                 <ProductCard
                     key={id}
-                    title={title}
+                    title={title ? title : DEFAULT_TITLE}
                     imageSource={imageSource ? imageSource : DEFAULT_IMAGE}
                     leftDescription={formatPrice(price)}
                     hasDeleteButton={isModeAdmin}

@@ -65,19 +65,20 @@ const ProductCardStyled = styled.div`
       padding: 0;
       border: none;
       background: none;
-    }
+    
 
-    .icon {
-      height: 100%;
-      width: 100%;
-    }
+      .icon {
+        height: 100%;
+        width: 100%;
+      }
 
-    :hover {
-      color: ${theme.colors.red};
-    }
+      :hover {
+        color: ${theme.colors.red};
+      }
 
-    :active {
-      color: ${theme.colors.primary};
+      :active {
+        color: ${theme.colors.primary};
+      }
     }
 
     .image {
@@ -128,14 +129,14 @@ const ProductCardStyled = styled.div`
             font-weight: ${theme.fonts.weights.medium};
             color: ${theme.colors.primary};
 
-              .right-description {
+            .right-description {
               display: flex;
               justify-content: flex-end;
               align-items: center;
               font-size: ${theme.fonts.size.P1};
 
               .primary-button {
-                margin-left: 32px;
+                margin-left: ${theme.spacing.lg};
                 font-size: ${theme.fonts.size.XS};
                 cursor: pointer;
                 padding: 12px;
@@ -146,10 +147,8 @@ const ProductCardStyled = styled.div`
                 }
               }
             }
-
           }
         }
         
     }
-
 `
