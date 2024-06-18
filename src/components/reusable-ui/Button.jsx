@@ -1,21 +1,27 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../pages/theme"
 
-export default function PrimaryButton({ label, iconAfterButton, className }) {
+export default function Button({ label, iconAfterButton, className, version="normal" }) {
   return (
     
-    <PrimaryButtonStyled className={className}>
+    <ButtonStyled className={className} version={version}>
     
         <span>{ label }</span>
         <div className="icon">{iconAfterButton && iconAfterButton}</div>
         
-    </PrimaryButtonStyled>
+    </ButtonStyled>
 
   )
 }
 
 // Un style propre à cet Input.
-const PrimaryButtonStyled = styled.button`
+const ButtonStyled = styled.button`
+
+    // Notion de Dictionnaire via props destructurées.
+    ${({ version }) => extraStyle[version]}
+`
+
+const extraStylePrimary = css`
 
     width: 100%;
     display: inline-flex;
@@ -78,6 +84,34 @@ const PrimaryButtonStyled = styled.button`
         justify-content : center;
         align-items: center;
         font-size: ${theme.fonts.SM};
-        margin-left: 10px;
       }
+
 `
+
+const extraStyleSuccess = css`
+  cursor: pointer;
+  color: ${theme.colors.white};
+  background: ${theme.colors.success};
+  border: 1px solid ${theme.colors.success};
+  border-radius: ${theme.borderRadius.round};
+  height: 35px;
+  padding: 0 1.5em;
+  font-weight: ${theme.fonts.weights.semiBold};
+
+  &:hover {
+    background: ${theme.colors.white};
+    color: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
+
+  &:active {
+    color: ${theme.colors.white};
+    background: ${theme.colors.success};
+    border: 1px solid ${theme.colors.success};
+  }
+`
+
+const extraStyle = {
+  normal: extraStylePrimary,
+  success: extraStyleSuccess,
+}

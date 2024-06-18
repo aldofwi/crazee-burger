@@ -5,7 +5,7 @@ import { BsPersonCircle } from 'react-icons/bs';
 import { styled } from 'styled-components';
 import { theme } from '../theme';
 import TextInput from '../../reusable-ui/TextInput';
-import PrimaryButton from '../../reusable-ui/PrimaryButton';
+import Button from '../../reusable-ui/Button';
 
 
 export default function LoginForm() {
@@ -45,7 +45,7 @@ export default function LoginForm() {
             required
           />
 
-          <PrimaryButton 
+          <Button 
             label={"Accéder à mon espace"}
             iconAfterButton={<IoChevronForward  />}
           />

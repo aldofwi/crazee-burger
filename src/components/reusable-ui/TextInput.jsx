@@ -21,7 +21,6 @@ export default function TextInput({ value, onChange, iconBeforeInput, className,
 // Un style propre à cet Input.
 const TextInputStyled = styled.div`
 
-    //background-color: ${theme.colors.white};
     border-radius: ${theme.borderRadius.round};
     display: flex;
     align-items: center;

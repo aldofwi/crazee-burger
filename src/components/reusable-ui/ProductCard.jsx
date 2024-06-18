@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import PrimaryButton from './PrimaryButton'
+import Button from './Button'
 import { TiDelete } from 'react-icons/ti';
 import { theme } from '../pages/theme'
 
@@ -27,7 +27,7 @@ export default function ProductCard({ imageSource, title, leftDescription, hasDe
 
           <div className="left-description">{leftDescription}
             <div className="right-description">
-              <PrimaryButton className="primary-button" label="Ajouter" />
+              <Button className="primary-button" label="Ajouter" />
             </div>
           </div>
           
