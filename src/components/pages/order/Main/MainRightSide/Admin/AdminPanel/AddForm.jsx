@@ -65,7 +65,7 @@ export default function AddForm() {
       
       <div className="submit">  
         <Button
-          className="submit"
+          className="submit-button"
           label={"Ajouter un nouveau produit au menu"}
           version="success"
         />
@@ -100,7 +100,8 @@ const AddFormStyled = styled.form`
     top: 3px;
 
     .submit-button {
-      width: 50%;
+      // width: 50%;
+      height: 100%;
     } 
   }
 `
