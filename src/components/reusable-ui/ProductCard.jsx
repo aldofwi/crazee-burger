@@ -1,13 +1,21 @@
 import styled from 'styled-components'
-import PrimaryButton from './PrimaryButton'
+import Button from './Button'
+import { TiDelete } from 'react-icons/ti';
 import { theme } from '../pages/theme'
 
-export default function ProductCard({ imageSource, title, leftDescription }) {
+export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton, onDelete}) {
 
-  return (
+  return (  
 
     <ProductCardStyled>
-    
+
+    {hasDeleteButton && 
+      <button 
+        className="delete-button" 
+        aria-label="delete-button" 
+        onClick={onDelete}><TiDelete className="icon" /></button>
+    }
+        
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -19,7 +27,7 @@ export default function ProductCard({ imageSource, title, leftDescription }) {
 
           <div className="left-description">{leftDescription}
             <div className="right-description">
-              <PrimaryButton className="primary-button" label="Ajouter" />
+              <Button className="primary-button" label="Ajouter" />
             </div>
           </div>
           
@@ -42,6 +50,36 @@ const ProductCardStyled = styled.div`
     padding-bottom: 10px;
     box-shadow: ${theme.shadows.medium};
     border-radius: ${theme.borderRadius.extraRound};
+    position: relative;
+
+    .delete-button {
+      border: 1px solid red;
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      color: ${theme.colors.primary};
+      z-index: 2;
+      padding: 0;
+      border: none;
+      background: none;
+    
+
+      .icon {
+        height: 100%;
+        width: 100%;
+      }
+
+      :hover {
+        color: ${theme.colors.red};
+      }
+
+      :active {
+        color: ${theme.colors.primary};
+      }
+    }
 
     .image {
         width: 100%;
@@ -90,29 +128,30 @@ const ProductCardStyled = styled.div`
             text-overflow: ellipsis;
             font-weight: ${theme.fonts.weights.medium};
             color: ${theme.colors.primary};
+          }
 
-              .right-description {
-              display: flex;
-              justify-content: flex-end;
-              align-items: center;
-              font-size: ${theme.fonts.size.P1};
+          .right-description {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: ${theme.fonts.size.P1};
+            //margin-right: ${theme.spacing.sm};
+            //margin-left: ${theme.spacing.lg};
+            margin-right: ${theme.spacing.xs};
+            margin-left: ${theme.spacing.lg};
 
-              .primary-button {
-                margin-left: 48px;
-                font-size: ${theme.fonts.size.XS};
-                cursor: pointer;
-                padding: 12px;
+            .primary-button {
+              font-size: ${theme.fonts.size.XS};
+              cursor: pointer;
+              padding: 12px;
 
-                span {
-                  margin-right: ${theme.spacing.sm};
-                  margin-left: ${theme.spacing.sm};
-                }
+              span {
+                margin-right: ${theme.spacing.sm};
+                margin-left: ${theme.spacing.sm};
               }
             }
-
           }
         }
         
     }
-
 `

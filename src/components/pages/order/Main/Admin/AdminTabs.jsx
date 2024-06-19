@@ -1,10 +1,10 @@
-import { theme } from "../../theme"
 import { useContext } from "react"
 import styled from "styled-components"
-import Tab from "../../../reusable-ui/Tab"
+import { tabsConfig } from "./tabsConfig"
+import Tab from "/src/components/reusable-ui/Tab"
+import { theme } from "/src/components/pages/theme"
 import OrderContext from "/src/context/OrderContext"
 import {FiChevronDown, FiChevronUp} from "react-icons/fi"
-import { tabsConfig } from "./tabsConfig"
 
 export default function AdminTabs() {
 

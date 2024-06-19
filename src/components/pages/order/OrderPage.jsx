@@ -3,13 +3,45 @@ import { useState } from 'react';
 import Main from './Main/Main';
 import Navbar from './Navbar/Navbar';
 import styled from 'styled-components';
-import OrderContext from '../../../context/OrderContext';
+import { fakeMenu } from '/src/fakeData/fakeMenu'
+import OrderContext from '/src/context/OrderContext';
 
 export default function OrderPage() {
 
-  const [isModeAdmin, setIsModeAdmin]       = useState(false);
-  const [isCollapsed, setIsCollapsed]       = useState(true);
+  const EMPTY_PRODUCT = {
+    id: "",
+    title: "",
+    imageSource: "",
+    price: 0,
+  };
+
+  const [menu, setMenu] = useState(fakeMenu.EMPTY);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [newProduct, setNewProduct]   = useState(EMPTY_PRODUCT);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
+
+  const handleAdd = (newProduct) => { 
+      // 1. copy du menu
+      const menuCopy = [...menu];
+      // 2. manip de la copie du tableau
+      const menuUpdated = [newProduct, ...menuCopy];
+      // 3. update du statut
+      setMenu(menuUpdated);
+  }
+
+  const handleDelete = (idOfDeleteProduct) => { 
+    // 1. copy du menu
+    const menuCopy = [...menu];
+    // 2. manip de la copie du tableau
+    const menuUpdated = menuCopy.filter((product) => product.id !== idOfDeleteProduct);
+    // 3. update du statut
+    setMenu(menuUpdated);
+ }
+
+ const resetMenu = () => { 
+  setMenu(fakeMenu.MEDIUM);
+}
 
   const orderContextValue = {
     isModeAdmin,
@@ -17,7 +49,13 @@ export default function OrderPage() {
     isCollapsed,
     setIsCollapsed,
     currentTabSelected, 
-    setCurrentTabSelected
+    setCurrentTabSelected,
+    menu,
+    resetMenu,
+    handleAdd,
+    handleDelete,
+    newProduct, 
+    setNewProduct
   }
 
   return (

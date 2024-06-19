@@ -1,25 +1,15 @@
-import { useContext } from 'react';
-import styled from 'styled-components'
-import OrderContext from '/src/context/OrderContext';
-import { theme } from '../../theme'
-import Admin from '../Admin/Admin'
-import Menu from '../Main/Menu'
+import MainRightSide from './MainRightSide/MainRightSide';
+import styled from 'styled-components';
+import { theme } from '../../theme';
 
 export default function Main() {
-
-  const {isModeAdmin, setIsModeAdmin} = useContext(OrderContext);
 
   return (
 
     <MainStyled>
-      
       {/* <div className="basket">Basket</div> */}
-
-      <div className="menu-admin">
-        <Menu />
-        {isModeAdmin && <Admin />}
-      </div>
-
+      <MainRightSide />
+      
     </MainStyled>
     
   )
@@ -27,9 +17,10 @@ export default function Main() {
 
 const MainStyled = styled.div`
 
+  // flex: 1; 
   background: ${theme.colors.background_white};
   height: calc(95vh - 10vh); // Hauteur Main - Hauteur Navbar
-  flex: 1; 
+
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
   box-shadow: ${theme.shadows.strong};
@@ -41,16 +32,4 @@ const MainStyled = styled.div`
     background: pink;
     border: 1px solid black;
   } */
-
-  // position absolte va être relatif 
-  // au 1er parent qu'il trouve (menu)
-  .menu-admin {
-    position: relative;
-    overflow-y: hidden;
-    display: grid;
-    border-bottom-left-radius: ${theme.borderRadius.extraRound};
-    border-bottom-right-radius: ${theme.borderRadius.extraRound};
-
-  }
-
 `
