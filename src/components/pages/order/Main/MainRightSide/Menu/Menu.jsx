@@ -5,7 +5,7 @@ import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { formatPrice } from '/src/utils/maths';
 import EmptyMenuClient from './EmptyMenuClient';
 import OrderContext from '/src/context/OrderContext';
-import ProductCard from '/src/components/reusable-ui/ProductCard';
+import ProductCard from '../../../../../reusable-ui/ProductCard';
 
 const DEFAULT_TITLE = "NEW PRODUCT";
 const DEFAULT_IMAGE = "/public/images/coming-soon.png";
@@ -14,7 +14,6 @@ export default function Menu() {
 
     // States
     const { menu, handleDelete, resetMenu, isModeAdmin } = useContext(OrderContext);
-
 
     // Comportements
 
@@ -37,6 +36,7 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     hasDeleteButton={isModeAdmin}
                     onDelete={() => handleDelete(id)}
+                    version={isModeAdmin ? "admin" : "client"}
                 />
 
             )
@@ -45,7 +45,6 @@ export default function Menu() {
     </MenuStyled>
   )
 }
-
 // <ProductCard {...item} />
 
 const MenuStyled = styled.div`

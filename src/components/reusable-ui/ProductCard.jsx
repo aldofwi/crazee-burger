@@ -1,13 +1,13 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import Button from './Button'
 import { TiDelete } from 'react-icons/ti';
 import { theme } from '../pages/theme'
 
-export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton, onDelete}) {
+export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton, onDelete, version="client"}) {
 
   return (  
 
-    <ProductCardStyled>
+    <ProductCardStyled version={version}>
 
     {hasDeleteButton && 
       <button 
@@ -41,6 +41,7 @@ export default function ProductCard({ imageSource, title, leftDescription, hasDe
 
 const ProductCardStyled = styled.div`
 
+    //border: 3px medium green;
     background: ${theme.colors.white};
     width: 200px;
     height: 300px;
@@ -154,4 +155,25 @@ const ProductCardStyled = styled.div`
         }
         
     }
+
+    // Notion de Dictionnaire via props destructurées.
+    ${({ version }) => extraStyle[version]}
 `
+
+const extraAdminStyle = css`
+
+  &:hover {
+      border: 2px solid ${theme.colors.primary};
+      // box-shadow: 0px -6px 8px -2px ${theme.colors.primary};
+  }
+`
+
+const extraClientStyle = css`
+
+`
+
+// Mode Admin ou Mode Client
+const extraStyle = {
+  admin: extraAdminStyle,
+  client: extraClientStyle,
+}

@@ -3,9 +3,9 @@ import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import SubmitMessage from "./SubmitMessage";
 import OrderContext from '/src/context/OrderContext';
-import Button from "/src/components/reusable-ui/Button";
+import Button from "../../../../../reusable-ui/Button";
 import { getInputTextsConfig } from "./inputTextConfig";
-import TextInput from "/src/components/reusable-ui/TextInput";
+import TextInput from "../../../../../reusable-ui/TextInput";
 
 export default function AddForm() {
 

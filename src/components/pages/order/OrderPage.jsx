@@ -15,11 +15,11 @@ export default function OrderPage() {
     price: 0,
   };
 
-  const [menu, setMenu] = useState(fakeMenu.EMPTY);
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [menu, setMenu] = useState(fakeMenu.MEDIUM);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [newProduct, setNewProduct]   = useState(EMPTY_PRODUCT);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
 
   const handleAdd = (newProduct) => { 
       // 1. copy du menu
