@@ -128,23 +128,26 @@ const ProductCardStyled = styled.div`
             text-overflow: ellipsis;
             font-weight: ${theme.fonts.weights.medium};
             color: ${theme.colors.primary};
+          }
 
-            .right-description {
-              display: flex;
-              justify-content: flex-end;
-              align-items: center;
-              font-size: ${theme.fonts.size.P1};
+          .right-description {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            font-size: ${theme.fonts.size.P1};
+            //margin-right: ${theme.spacing.sm};
+            //margin-left: ${theme.spacing.lg};
+            margin-right: ${theme.spacing.xs};
+            margin-left: ${theme.spacing.lg};
 
-              .primary-button {
-                margin-left: ${theme.spacing.lg};
-                font-size: ${theme.fonts.size.XS};
-                cursor: pointer;
-                padding: 12px;
+            .primary-button {
+              font-size: ${theme.fonts.size.XS};
+              cursor: pointer;
+              padding: 12px;
 
-                span {
-                  margin-right: ${theme.spacing.sm};
-                  margin-left: ${theme.spacing.sm};
-                }
+              span {
+                margin-right: ${theme.spacing.sm};
+                margin-left: ${theme.spacing.sm};
               }
             }
           }
