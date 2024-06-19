@@ -5,7 +5,7 @@ import { theme } from '../pages/theme'
 
 export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton, onDelete}) {
 
-  return (
+  return (  
 
     <ProductCardStyled>
 
