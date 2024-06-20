@@ -4,6 +4,7 @@ import { theme } from '../../../../theme';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { formatPrice } from '/src/utils/maths';
 import EmptyMenuClient from './EmptyMenuClient';
+import { checkIfProductIsClicked } from './helper';
 import OrderContext from '/src/context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
 import { DEFAULT_IMAGE, DEFAULT_TITLE } from '../../../../../../enums/product';
@@ -15,13 +16,14 @@ export default function Menu() {
             resetMenu, 
             isModeAdmin,
             handleDelete,
+            productSelected,
             setProductSelected } = useContext(OrderContext);
 
     // Comportements
     const handleClick = (idProductClicked) => { 
         const productClickedOn = menu.find((product) => product.id === idProductClicked);
         setProductSelected(productClickedOn);
-     }
+    }
 
     // Affichage
     if(menu.length === 0) {
@@ -44,6 +46,7 @@ export default function Menu() {
                     onDelete={() => handleDelete(id)}
                     onClick={() => handleClick(id)}
                     isHoverable={isModeAdmin}
+                    isSelected={checkIfProductIsClicked(id, productSelected.id)}
                 />
 
             )

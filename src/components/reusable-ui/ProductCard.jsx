@@ -10,13 +10,14 @@ export default function ProductCard({
     hasDeleteButton, 
     onDelete, 
     onClick, 
-    isHoverable }) {
+    isHoverable,
+    isSelected }) {
 
   return (  
 
     <ProductCardStyled onClick={onClick} isHoverable={isHoverable}>
 
-    <div className="card">
+    <div className="card" style={isSelected ? {background: "orange"} : {}}>
       {hasDeleteButton &&
         <button
           className="delete-button"
@@ -50,6 +51,7 @@ const ProductCardStyled = styled.div`
   // Notion de Dictionnaire via props destructurées.
   ${(props) => props.isHoverable && hoverableStyle}
   border-radius: ${theme.borderRadius.extraRound};
+  height: 330px;
 
   .card {
     background: ${theme.colors.white};
