@@ -6,15 +6,9 @@ import OrderContext from '/src/context/OrderContext';
 import Button from "../../../../../reusable-ui/Button";
 import { getInputTextsConfig } from "./inputTextConfig";
 import TextInput from "../../../../../reusable-ui/TextInput";
+import { EMPTY_PRODUCT } from "../../../../../../enums/product";
 
 export default function AddForm() {
-
-  const EMPTY_PRODUCT = {
-    id: "",
-    title: "",
-    imageSource: "",
-    price: 0,
-  };
 
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
   const [isSubmitted, setIsSubmitted] = useState(false);

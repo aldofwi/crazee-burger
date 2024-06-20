@@ -5,21 +5,16 @@ import Navbar from './Navbar/Navbar';
 import styled from 'styled-components';
 import { fakeMenu } from '/src/fakeData/fakeMenu'
 import OrderContext from '/src/context/OrderContext';
+import { EMPTY_PRODUCT } from '../../../enums/product';
 
 export default function OrderPage() {
-
-  const EMPTY_PRODUCT = {
-    id: "",
-    title: "",
-    imageSource: "",
-    price: 0,
-  };
 
   const [menu, setMenu] = useState(fakeMenu.MEDIUM);
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [newProduct, setNewProduct]   = useState(EMPTY_PRODUCT);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
+  const [productSelected, setProductSelected] = useState({});
 
   const handleAdd = (newProduct) => { 
       // 1. copy du menu
@@ -55,7 +50,9 @@ export default function OrderPage() {
     handleAdd,
     handleDelete,
     newProduct, 
-    setNewProduct
+    setNewProduct,
+    productSelected, 
+    setProductSelected
   }
 
   return (

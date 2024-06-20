@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '/src/components/pages/theme';
+import { theme } from '../../../../theme';
 import { useContext } from 'react';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { formatPrice } from '/src/utils/maths';
@@ -13,7 +13,7 @@ const DEFAULT_IMAGE = "/public/images/coming-soon.png";
 export default function Menu() {
 
     // States
-    const { menu, handleDelete, resetMenu, isModeAdmin } = useContext(OrderContext);
+    const { menu, handleDelete, resetMenu, isModeAdmin, setProductSelected } = useContext(OrderContext);
 
     // Comportements
 
@@ -22,6 +22,14 @@ export default function Menu() {
         if(!isModeAdmin) return <EmptyMenuClient />
         return <EmptyMenuAdmin onReset={resetMenu} />
     }
+
+    const handleClick = (idProductClicked) => { 
+        
+        console.log("idProductClicked : ", idProductClicked);
+        const productSelected = menu.find((product) => product.id === idProductClicked);
+        console.log("productSelected : ", productSelected);
+        setProductSelected(productSelected);
+     }
 
   return (
 
@@ -36,6 +44,7 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     hasDeleteButton={isModeAdmin}
                     onDelete={() => handleDelete(id)}
+                    onClick={() => handleClick(id)}
                     version={isModeAdmin ? "admin" : "client"}
                 />
 

@@ -3,11 +3,11 @@ import Button from './Button'
 import { TiDelete } from 'react-icons/ti';
 import { theme } from '../pages/theme'
 
-export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton, onDelete, version="client"}) {
+export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton, onDelete, onClick, version="client"}) {
 
   return (  
 
-    <ProductCardStyled version={version}>
+    <ProductCardStyled onClick={onClick} version={version}>
 
     {hasDeleteButton && 
       <button 
