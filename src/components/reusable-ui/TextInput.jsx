@@ -8,7 +8,7 @@ export default function TextInput({ value, onChange, iconBeforeInput, className,
     <TextInputStyled className={className} version={version}>
         <div className="icon">{iconBeforeInput && iconBeforeInput}</div>
         <input
-            value={value}
+            value={value || ""}
             onChange={onChange}
             type="text"
             {...extraProps}

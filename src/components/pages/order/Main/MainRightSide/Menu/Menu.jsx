@@ -1,19 +1,21 @@
+import { useContext } from 'react';
 import styled from 'styled-components';
 import { theme } from '../../../../theme';
-import { useContext } from 'react';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { formatPrice } from '/src/utils/maths';
 import EmptyMenuClient from './EmptyMenuClient';
 import OrderContext from '/src/context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
-
-const DEFAULT_TITLE = "NEW PRODUCT";
-const DEFAULT_IMAGE = "/public/images/coming-soon.png";
+import { DEFAULT_IMAGE, DEFAULT_TITLE } from '../../../../../../enums/product';
 
 export default function Menu() {
 
     // States
-    const { menu, handleDelete, resetMenu, isModeAdmin, setProductSelected } = useContext(OrderContext);
+    const { menu,
+            resetMenu, 
+            isModeAdmin,
+            handleDelete,
+            setProductSelected } = useContext(OrderContext);
 
     // Comportements
 
@@ -25,9 +27,7 @@ export default function Menu() {
 
     const handleClick = (idProductClicked) => { 
         
-        console.log("idProductClicked : ", idProductClicked);
         const productSelected = menu.find((product) => product.id === idProductClicked);
-        console.log("productSelected : ", productSelected);
         setProductSelected(productSelected);
      }
 

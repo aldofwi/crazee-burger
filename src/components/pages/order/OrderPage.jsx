@@ -17,12 +17,25 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState({});
 
   const handleAdd = (newProduct) => { 
-      // 1. copy du menu
-      const menuCopy = [...menu];
+      // 1. [...menu] pas de shallow copy, que en surface
+      const menuCopy = JSON.parse(JSON.stringify(menu));
       // 2. manip de la copie du tableau
       const menuUpdated = [newProduct, ...menuCopy];
       // 3. update du statut
       setMenu(menuUpdated);
+  }
+
+  const handleEdit = (productBeingEdited) => {
+
+    // 1. copy du menu (deep clone)
+    const menuCopy = JSON.parse(JSON.stringify(menu));
+    
+    // 2. manip de la copie du tableau
+    const indexOfMenuToUpdated = menu.findIndex((product) => product.id === productBeingEdited.id);
+    menuCopy[indexOfMenuToUpdated] = productBeingEdited;
+    
+    // 3. update du statut
+    setMenu(menuCopy);
   }
 
   const handleDelete = (idOfDeleteProduct) => { 
@@ -32,11 +45,12 @@ export default function OrderPage() {
     const menuUpdated = menuCopy.filter((product) => product.id !== idOfDeleteProduct);
     // 3. update du statut
     setMenu(menuUpdated);
- }
+  }
 
- const resetMenu = () => { 
+  const resetMenu = () => { 
   setMenu(fakeMenu.MEDIUM);
-}
+  }
+
 
   const orderContextValue = {
     isModeAdmin,
@@ -48,6 +62,7 @@ export default function OrderPage() {
     menu,
     resetMenu,
     handleAdd,
+    handleEdit,
     handleDelete,
     newProduct, 
     setNewProduct,
@@ -81,14 +96,12 @@ const OrderPageStyled = styled.div`
   align-items: center;
 
   .container {
-    //background: red;
     height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;
     padding: 0 10px 0 10px;
     border-radius: ${theme.borderRadius.extraRound};
-
   }
   
 `
