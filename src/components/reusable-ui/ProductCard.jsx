@@ -3,36 +3,42 @@ import Button from './Button'
 import { TiDelete } from 'react-icons/ti';
 import { theme } from '../pages/theme'
 
-export default function ProductCard({ imageSource, title, leftDescription, hasDeleteButton, onDelete, onClick, version="client"}) {
+export default function ProductCard({ 
+    title,  
+    imageSource,  
+    leftDescription, 
+    hasDeleteButton, 
+    onDelete, 
+    onClick, 
+    isHoverable }) {
 
   return (  
 
-    <ProductCardStyled onClick={onClick} version={version}>
+    <ProductCardStyled onClick={onClick} isHoverable={isHoverable}>
 
-    {hasDeleteButton && 
-      <button 
-        className="delete-button" 
-        aria-label="delete-button" 
-        onClick={onDelete}><TiDelete className="icon" /></button>
-    }
-        
-      <div className="image">
-        <img src={imageSource} alt={title} />
-      </div>
-
-      <div className="text-info">
-
-        <div className="title">{title}</div>
-        <div className="description">
-
-          <div className="left-description">{leftDescription}
-            <div className="right-description">
-              <Button className="primary-button" label="Ajouter" />
-            </div>
-          </div>
-          
+    <div className="card">
+      {hasDeleteButton &&
+        <button
+          className="delete-button"
+          aria-label="delete-button"
+          onClick={onDelete}><TiDelete className="icon" /></button>
+      }
+      
+        <div className="image">
+          <img src={imageSource} alt={title} />
         </div>
-      </div>
+        <div className="text-info">
+          <div className="title">{title}</div>
+          <div className="description">
+            <div className="left-description">{leftDescription}
+              <div className="right-description">
+                <Button className="primary-button" label="Ajouter" />
+              </div>
+            </div>
+      
+          </div>
+        </div>
+    </div>
 
     </ProductCardStyled>
 
@@ -41,7 +47,11 @@ export default function ProductCard({ imageSource, title, leftDescription, hasDe
 
 const ProductCardStyled = styled.div`
 
-    //border: 3px medium green;
+  // Notion de Dictionnaire via props destructurées.
+  ${(props) => props.isHoverable && hoverableStyle}
+  border-radius: ${theme.borderRadius.extraRound};
+
+  .card {
     background: ${theme.colors.white};
     box-sizing: border-box; // de bord à bord avec padding etc.
     width: 240px;
@@ -154,27 +164,17 @@ const ProductCardStyled = styled.div`
             }
           }
         }
-        
     }
-
-    // Notion de Dictionnaire via props destructurées.
-    ${({ version }) => extraStyle[version]}
-`
-
-const extraAdminStyle = css`
-
-  &:hover {
-      border: 2px solid ${theme.colors.primary};
-      // box-shadow: 0px -6px 8px -2px ${theme.colors.primary};
   }
 `
 
-const extraClientStyle = css`
+const hoverableStyle = css`
+  
+  &:hover {
+    transform: scale(1.05);
+    transition: ease-out 0.4s;
+    box-shadow: ${theme.shadows.orangeHighlight};
+    cursor: pointer;
+  }
 
 `
-
-// Mode Admin ou Mode Client
-const extraStyle = {
-  admin: extraAdminStyle,
-  client: extraClientStyle,
-}

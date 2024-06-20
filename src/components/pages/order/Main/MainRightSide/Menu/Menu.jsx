@@ -43,7 +43,7 @@ export default function Menu() {
                     hasDeleteButton={isModeAdmin}
                     onDelete={() => handleDelete(id)}
                     onClick={() => handleClick(id)}
-                    version={isModeAdmin ? "admin" : "client"}
+                    isHoverable={isModeAdmin}
                 />
 
             )
