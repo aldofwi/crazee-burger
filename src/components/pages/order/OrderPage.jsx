@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import { fakeMenu } from '/src/fakeData/fakeMenu'
 import OrderContext from '/src/context/OrderContext';
 import { EMPTY_PRODUCT } from '../../../enums/product';
+import { deepClone } from '../../../utils/array';
 
 export default function OrderPage() {
 
@@ -18,17 +19,18 @@ export default function OrderPage() {
 
   const handleAdd = (newProduct) => { 
       // 1. [...menu] pas de shallow copy, que en surface
-      const menuCopy = JSON.parse(JSON.stringify(menu));
+      const menuCopy = deepClone(menu);
+
       // 2. manip de la copie du tableau
       const menuUpdated = [newProduct, ...menuCopy];
+
       // 3. update du statut
       setMenu(menuUpdated);
   }
 
   const handleEdit = (productBeingEdited) => {
-
     // 1. copy du menu (deep clone)
-    const menuCopy = JSON.parse(JSON.stringify(menu));
+    const menuCopy = deepClone(menu);
     
     // 2. manip de la copie du tableau
     const indexOfMenuToUpdated = menu.findIndex((product) => product.id === productBeingEdited.id);
@@ -41,8 +43,10 @@ export default function OrderPage() {
   const handleDelete = (idOfDeleteProduct) => { 
     // 1. copy du menu
     const menuCopy = [...menu];
+
     // 2. manip de la copie du tableau
     const menuUpdated = menuCopy.filter((product) => product.id !== idOfDeleteProduct);
+
     // 3. update du statut
     setMenu(menuUpdated);
   }
