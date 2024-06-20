@@ -17,6 +17,7 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [productSelected, setProductSelected] = useState({});
 
+  // State Handler (ou Gestionnaire de state)
   const handleAdd = (newProduct) => { 
       // 1. [...menu] pas de shallow copy, que en surface
       const menuCopy = deepClone(menu);

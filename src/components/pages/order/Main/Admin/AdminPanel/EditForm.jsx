@@ -12,6 +12,7 @@ export default function EditForm() {
 
   const inputTexts = getInputTextsConfig(productSelected);
 
+  // Event Handler (ou gestionnaire d'événements)
   const handleChange = (event) => { 
     const {name, value} = event.target;
     const produitEnMAJ = {

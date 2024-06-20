@@ -18,18 +18,16 @@ export default function Menu() {
             setProductSelected } = useContext(OrderContext);
 
     // Comportements
+    const handleClick = (idProductClicked) => { 
+        const productClickedOn = menu.find((product) => product.id === idProductClicked);
+        setProductSelected(productClickedOn);
+     }
 
     // Affichage
     if(menu.length === 0) {
         if(!isModeAdmin) return <EmptyMenuClient />
         return <EmptyMenuAdmin onReset={resetMenu} />
     }
-
-    const handleClick = (idProductClicked) => { 
-        
-        const productSelected = menu.find((product) => product.id === idProductClicked);
-        setProductSelected(productSelected);
-     }
 
   return (
 

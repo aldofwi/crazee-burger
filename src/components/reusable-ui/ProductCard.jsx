@@ -43,8 +43,9 @@ const ProductCardStyled = styled.div`
 
     //border: 3px medium green;
     background: ${theme.colors.white};
-    width: 200px;
-    height: 300px;
+    box-sizing: border-box; // de bord à bord avec padding etc.
+    width: 240px;
+    height: 330px;
     display: grid;
     grid-template-rows: 65% 1fr;
     padding: 20px;
