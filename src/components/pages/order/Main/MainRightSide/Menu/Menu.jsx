@@ -21,6 +21,7 @@ export default function Menu() {
 
     // Comportements
     const handleClick = (idProductClicked) => { 
+        if(!isModeAdmin) return;
         const productClickedOn = menu.find((product) => product.id === idProductClicked);
         setProductSelected(productClickedOn);
     }
