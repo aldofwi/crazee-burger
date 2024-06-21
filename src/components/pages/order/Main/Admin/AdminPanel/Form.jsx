@@ -1,13 +1,10 @@
-import { useContext, useState } from "react";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
-import SubmitMessage from "./SubmitMessage";
-import Button from "../../../../../reusable-ui/Button";
 import { getInputTextsConfig } from "./inputTextConfig";
 import TextInput from "../../../../../reusable-ui/TextInput";
 import React from "react";
 
-const Form = React.forwardRef(({ product, onSubmit, onChange, isSubmitted, QUELQUECHOSE }, ref) => {
+const Form = React.forwardRef(({ product, onSubmit, onChange, children }, ref) => {
 
   const inputTexts = getInputTextsConfig(product);
 
@@ -27,7 +24,7 @@ const Form = React.forwardRef(({ product, onSubmit, onChange, isSubmitted, QUELQ
           />) }
       </div>
 
-      <div className="submit">{QUELQUECHOSE}</div>
+      <div className="submit">{children}</div>
 
     </FormStyled>
   )
@@ -58,11 +55,6 @@ const FormStyled = styled.form`
     align-items: center;
     position: relative;
     top: 3px;
-
-    .submit-button {
-      // width: 50%;
-      height: 100%;
-    } 
   }
 `
 
