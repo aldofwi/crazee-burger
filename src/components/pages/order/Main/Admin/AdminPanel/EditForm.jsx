@@ -1,16 +1,16 @@
 import OrderContext from "../../../../../../context/OrderContext";
-import TextInput from "../../../../../reusable-ui/TextInput";
-import { getInputTextsConfig } from "./inputTextConfig";
 import { useContext } from "react";
 import styled from "styled-components";
-import ImagePreview from "./ImagePreview";
-import { theme } from "../../../../theme";
+import Form from "./Form";
 import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
 
-  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext);
-  const inputTexts = getInputTextsConfig(productSelected);
+  const { 
+      productSelected, 
+      setProductSelected, 
+      handleEdit, 
+      titleEditRef } = useContext(OrderContext);
 
   // Event Handler (ou gestionnaire d'événements)
   const handleChange = (event) => { 
@@ -25,26 +25,13 @@ export default function EditForm() {
   }
 
   return (
-    <EditFormStyled>
-      
-      <ImagePreview newProduct={productSelected} />
 
-      <div className="input-fields">
-        { inputTexts.map(input => 
-          <TextInput
-              key={input.id}
-              {...input} // Déstructuration de nos inputs.
-              onChange={handleChange}
-              version="minimalist"
-              ref={input.name === "title" ? titleEditRef : null}
-          />) }
-      </div>
-
-      <div className="submit">
-          <EditInfoMessage />
-      </div>
-
-    </EditFormStyled>
+        <Form
+          product={productSelected}
+          onChange={handleChange}
+          ref={titleEditRef}
+          QUELQUECHOSE={<EditInfoMessage />}
+        />
   )
 }
 

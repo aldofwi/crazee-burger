@@ -5,8 +5,9 @@ import SubmitMessage from "./SubmitMessage";
 import Button from "../../../../../reusable-ui/Button";
 import { getInputTextsConfig } from "./inputTextConfig";
 import TextInput from "../../../../../reusable-ui/TextInput";
+import React from "react";
 
-export default function Form({ product, onSubmit, onChange, isSubmitted }) {
+const Form = React.forwardRef(({ product, onSubmit, onChange, isSubmitted, QUELQUECHOSE }, ref) => {
 
   const inputTexts = getInputTextsConfig(product);
 
@@ -22,21 +23,18 @@ export default function Form({ product, onSubmit, onChange, isSubmitted }) {
               {...input} // Déstructuration de nos inputs.
               onChange={onChange}
               version="minimalist"
+              ref={ref && input.name === "title" ? ref : null}
           />) }
       </div>
-      
-      <div className="submit">  
-        <Button
-          className="submit-button"
-          label={"Ajouter un nouveau produit au menu"}
-          version="success"
-        />
-        {isSubmitted && <SubmitMessage />}
-      </div>
+
+      <div className="submit">{QUELQUECHOSE}</div>
 
     </FormStyled>
   )
 }
+)
+
+export default Form
 
 const FormStyled = styled.form`
 
