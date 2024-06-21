@@ -5,6 +5,7 @@ import { useContext } from "react";
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import { theme } from "../../../../theme";
+import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
 
@@ -40,9 +41,7 @@ export default function EditForm() {
       </div>
 
       <div className="submit">
-        <span className="sentence">Cliquer sur un produit du menu pour le modifier{" "}
-          <span className="live-update">en temps réel</span>
-        </span>
+          <EditInfoMessage />
       </div>
 
     </EditFormStyled>
@@ -71,14 +70,5 @@ grid-row-gap: 8px;
   align-items: center;
   position: relative;
   top: 3px;
-
-  .sentence {
-    color: ${theme.colors.primary};
-    font-size: ${theme.fonts.size.SM};
-
-    .live-update {
-      text-decoration: underline;
-    }
-  }
 }
 `
