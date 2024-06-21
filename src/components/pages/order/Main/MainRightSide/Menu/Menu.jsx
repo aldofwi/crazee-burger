@@ -7,7 +7,7 @@ import EmptyMenuClient from './EmptyMenuClient';
 import { checkIfProductIsClicked } from './helper';
 import OrderContext from '/src/context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
-import { DEFAULT_IMAGE, DEFAULT_TITLE } from '../../../../../../enums/product';
+import { DEFAULT_IMAGE, DEFAULT_TITLE, EMPTY_PRODUCT } from '../../../../../../enums/product';
 
 export default function Menu() {
 
@@ -33,9 +33,11 @@ export default function Menu() {
         titleEditRef.current.focus();
     }
 
-    const handleCardDelete = (event, id) => { 
+    const handleCardDelete = (event, idProductToDelete) => { 
         event.stopPropagation();
-        handleDelete(id);
+        handleDelete(idProductToDelete);
+        idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
+        titleEditRef.current.focus();
     }
 
     // Affichage

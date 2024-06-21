@@ -3,7 +3,6 @@ import TextInput from "../../../../../reusable-ui/TextInput";
 import { getInputTextsConfig } from "./inputTextConfig";
 import { useContext } from "react";
 import styled from "styled-components";
-import HintMessage from "./HintMessage";
 import ImagePreview from "./ImagePreview";
 
 export default function EditForm() {

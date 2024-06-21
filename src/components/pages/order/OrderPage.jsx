@@ -14,8 +14,8 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [newProduct, setNewProduct]   = useState(EMPTY_PRODUCT);
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
-  const [productSelected, setProductSelected] = useState({});
   const titleEditRef = useRef();
 
   // State Handler (ou Gestionnaire de state)

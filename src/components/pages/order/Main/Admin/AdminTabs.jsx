@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import styled from "styled-components"
-import { tabsConfig } from "./tabsConfig"
+import { getTabsConfig } from "./tabsConfig"
 import Tab from "/src/components/reusable-ui/Tab"
 import { theme } from "/src/components/pages/theme"
 import OrderContext from "/src/context/OrderContext"
@@ -19,7 +19,7 @@ export default function AdminTabs() {
     setCurrentTabSelected(tabSelected); // sélectionne moi la tab sélectionnée
   }
 
-  const tabs = tabsConfig;
+  const tabs = getTabsConfig();
 
   return (
 
