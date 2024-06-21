@@ -15,7 +15,11 @@ export default function ProductCard({
 
   return (  
 
-    <ProductCardStyled onClick={onClick} isHoverable={isHoverable} isSelected={isSelected}>
+    <ProductCardStyled 
+        onClick={onClick} 
+        isHoverable={isHoverable} 
+        isSelected={isSelected}
+    >
 
     <div className="card">
       {hasDeleteButton &&
@@ -33,7 +37,7 @@ export default function ProductCard({
           <div className="description">
             <div className="left-description">{leftDescription}
               <div className="right-description">
-                <Button className="primary-button" label="Ajouter" />
+                <Button className="primary-button" label="Ajouter" onClick={(event) => event.stopPropagation()} />
               </div>
             </div>
       
