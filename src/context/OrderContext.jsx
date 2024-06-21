@@ -17,6 +17,8 @@ export default createContext({
     handleEdit: () => {},
     handleDelete: () => {},
 
+    titleEditRef: {},
+
     newProduct: {}, 
     setNewProduct: () => {},
 

@@ -13,28 +13,30 @@ export default function Menu() {
 
     // States
     const { menu,
-            resetMenu, 
+            resetMenu,
             isModeAdmin,
             handleDelete,
+            titleEditRef, 
             setIsCollapsed,
             productSelected,
             setProductSelected,
             setCurrentTabSelected } = useContext(OrderContext);
 
     // Comportements
-    const handleClick = (idProductClicked) => { 
-        if(!isModeAdmin) return;
+    const handleClick = async (idProductClicked) => { 
+        if(!isModeAdmin) return; // attendre le comp soit créé pr fr focus.
 
-        setIsCollapsed(false);
-        setCurrentTabSelected("edit");
+        await setIsCollapsed(false);
+        await setCurrentTabSelected("edit");
         const productClickedOn = menu.find((product) => product.id === idProductClicked);
-        setProductSelected(productClickedOn);
+        await setProductSelected(productClickedOn);
+        titleEditRef.current.focus();
     }
 
     const handleCardDelete = (event, id) => { 
         event.stopPropagation();
         handleDelete(id);
-     }
+    }
 
     // Affichage
     if(menu.length === 0) {

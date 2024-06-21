@@ -1,5 +1,5 @@
 import { theme } from '../theme';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Main from './Main/Main';
 import Navbar from './Navbar/Navbar';
 import styled from 'styled-components';
@@ -16,6 +16,7 @@ export default function OrderPage() {
   const [newProduct, setNewProduct]   = useState(EMPTY_PRODUCT);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [productSelected, setProductSelected] = useState({});
+  const titleEditRef = useRef();
 
   // State Handler (ou Gestionnaire de state)
   const handleAdd = (newProduct) => { 
@@ -69,6 +70,7 @@ export default function OrderPage() {
     handleAdd,
     handleEdit,
     handleDelete,
+    titleEditRef,
     newProduct, 
     setNewProduct,
     productSelected, 

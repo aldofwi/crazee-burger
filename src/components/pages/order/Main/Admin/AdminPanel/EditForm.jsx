@@ -8,8 +8,7 @@ import ImagePreview from "./ImagePreview";
 
 export default function EditForm() {
 
-  const { productSelected, setProductSelected, handleEdit } = useContext(OrderContext);
-
+  const { productSelected, setProductSelected, handleEdit, titleEditRef } = useContext(OrderContext);
   const inputTexts = getInputTextsConfig(productSelected);
 
   // Event Handler (ou gestionnaire d'événements)
@@ -36,6 +35,7 @@ export default function EditForm() {
               {...input} // Déstructuration de nos inputs.
               onChange={handleChange}
               version="minimalist"
+              ref={input.name === "title" ? titleEditRef : null}
           />) }
       </div>
 
