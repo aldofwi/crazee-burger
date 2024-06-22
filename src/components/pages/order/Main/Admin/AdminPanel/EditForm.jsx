@@ -24,8 +24,12 @@ export default function EditForm() {
   }
 
   return (
-        <Form product={productSelected} onChange={handleChange} ref={titleEditRef}>
-          <EditInfoMessage />
+        <Form 
+          product={productSelected} 
+          onChange={handleChange} 
+          ref={titleEditRef}>
+
+            <EditInfoMessage />
         </Form>
   )
 }
