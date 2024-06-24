@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import ImagePreview from "./ImagePreview";
 import { getInputTextsConfig } from "./inputTextConfig";
-import TextInput from "../../../../../reusable-ui/TextInput";
+import TextInput from "../../../../../../reusable-ui/TextInput";
 import React from "react";
 
 const Form = React.forwardRef(({ product, onSubmit, onChange, children }, ref) => {

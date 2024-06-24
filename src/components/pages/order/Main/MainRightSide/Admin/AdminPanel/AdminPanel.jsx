@@ -1,9 +1,9 @@
 import { useContext } from "react";
-import { theme } from '/src/components/pages/theme'
-import styled from "styled-components"
+import styled from "styled-components";
+import { theme } from "../../../../../../../theme";
 import OrderContext from "/src/context/OrderContext";
 import { getTabSelected, getTabsConfig } from "../tabsConfig";
-import { EMPTY_PRODUCT } from "../../../../../../enums/product";
+import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
 
 export default function AdminPanel() {
 

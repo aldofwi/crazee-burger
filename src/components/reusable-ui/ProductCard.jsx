@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components'
 import Button from './Button'
 import { TiDelete } from 'react-icons/ti';
-import { theme } from '../pages/theme'
+import { theme } from '../../theme'
 
 export default function ProductCard({ 
     title,  
