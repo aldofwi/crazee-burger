@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { theme } from "../pages/theme";
+import { theme } from "../../theme";
 
 const TextInput = React.forwardRef(
   ({ value, onChange, iconBeforeInput, className, version="normal", ...extraProps }, ref) => {

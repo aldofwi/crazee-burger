@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { theme } from "../pages/theme"
+import { theme } from "../../theme"
 
 export default function Tab({ label, Icon, onClick, className }) {
 

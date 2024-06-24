@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import { theme } from "../pages/theme"
+import { theme } from "../../theme"
 
 export default function ToggleButton({  isChecked,
                                         onToggle,

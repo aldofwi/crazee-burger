@@ -1,7 +1,8 @@
 import styled, { css } from "styled-components"
-import { theme } from "../pages/theme"
+import { theme } from "../../theme"
 
 export default function Button({ label, iconAfterButton, className, version="normal", onClick }) {
+  
   return (
     
     <ButtonStyled className={className} version={version} onClick={onClick}>

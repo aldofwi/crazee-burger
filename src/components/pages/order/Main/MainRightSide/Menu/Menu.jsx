@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../../theme';
+import { theme } from '../../../../../../theme';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { formatPrice } from '/src/utils/maths';
 import EmptyMenuClient from './EmptyMenuClient';
@@ -78,14 +78,15 @@ const MenuStyled = styled.div`
     grid-row-gap: 60px;
 
     background: ${theme.colors.background_white};
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
 
-    box-shadow: ${theme.shadows.medium};
+    box-shadow: ${theme.shadows.strong};
 
     padding: 50px 50px 150px;
     justify-items: center;
     overflow-y: scroll;
 `
 
+    // grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     // grid-template-columns: repeat(4, 1fr);
     // border: 1px solid green;

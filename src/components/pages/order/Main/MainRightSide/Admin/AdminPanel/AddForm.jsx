@@ -1,13 +1,14 @@
-import { useContext, useState } from "react";
+import Form from "./Form";
+import { useContext } from "react";
+import SubmitButton from "./SubmitButton";
 import OrderContext from '/src/context/OrderContext';
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
-import SubmitButton from "./SubmitButton";
-import Form from "./Form";
+import { useSuccessMsg } from "../../../../../../../hooks/useDisplaySuccessMsg";
 
 export default function AddForm() {
 
   const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const {isSubmitted, displaySuccessMsg} = useSuccessMsg(3000); // Custom Hook
 
   const handleSubmit = (event) => { 
     event.preventDefault(); // No Reload
@@ -26,13 +27,6 @@ export default function AddForm() {
     const newValue = event.target.value;
 
     setNewProduct({ ...newProduct, [name]: newValue });
-  }
-
-  const displaySuccessMsg = () => { 
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsSubmitted(false);
-    }, 2000);
   }
 
   return (

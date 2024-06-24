@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { FiCheck } from "react-icons/fi"
-import { theme } from "/src/components/pages/theme"
+import { theme } from "../../../../../../../theme"
 
 export default function SubmitMessage() {
 
