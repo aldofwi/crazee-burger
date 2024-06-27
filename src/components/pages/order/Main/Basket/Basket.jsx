@@ -1,12 +1,12 @@
 import OrderContext from "../../../../../context/OrderContext"
 import { formatPrice } from "../../../../../utils/maths"
 import BasketProducts from "./BasketProducts"
+import { theme } from "../../../../../theme"
 import EmptyBasket from "./EmptyBasket"
 import styled from "styled-components"
 import { useContext } from "react"
 import Footer from "./Footer"
 import Total from "./Total"
-import { theme } from "../../../../../theme"
 
 export default function Basket() {
 

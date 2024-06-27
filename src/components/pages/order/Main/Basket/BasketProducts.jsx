@@ -1,9 +1,8 @@
-import styled from "styled-components"
 import { DEFAULT_IMAGE } from "../../../../../enums/product"
+import styled from "styled-components"
 import BasketCard from "./BasketCard"
 
 export default function BasketProducts({ basket }) {
-
 
 
   return (
@@ -11,9 +10,9 @@ export default function BasketProducts({ basket }) {
     <BasketProductsStyle>
         {basket.map((basketProduct) => (
 
-            <div className="basket-card">
+            <div className="basket-card" key={basketProduct.id}>
                 <BasketCard 
-                    {...basketProduct}  
+                    {...basketProduct}
                     imageSource={basketProduct.imageSource ? basketProduct.imageSource : DEFAULT_IMAGE}    
                 />
             </div>

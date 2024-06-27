@@ -8,6 +8,7 @@ import { checkIfProductIsClicked } from './helper';
 import OrderContext from '/src/context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
 import { DEFAULT_IMAGE, DEFAULT_TITLE, EMPTY_PRODUCT } from '../../../../../../enums/product';
+import { findInArray } from '../../../../../../utils/array';
 
 export default function Menu() {
 
@@ -29,18 +30,20 @@ export default function Menu() {
 
         await setIsCollapsed(false);
         await setCurrentTabSelected("edit");
-        const productClickedOn = menu.find((product) => product.id === idProductClicked);
+        const productClickedOn = findInArray(idProductClicked, menu);
         await setProductSelected(productClickedOn);
         titleEditRef.current.focus();
     }
 
-    const handleCardAdd = (event, idProductToAdd) => {
+    const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation();
-        handleAddBasket(menu.find((product) => product.id === idProductToAdd));
+        
+        handleAddBasket(findInArray(idProductToAdd, menu));
     }
 
     const handleCardDelete = (event, idProductToDelete) => { 
         event.stopPropagation();
+
         handleDeleteMenu(idProductToDelete);
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
         titleEditRef.current.focus();
@@ -65,7 +68,7 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     hasDeleteButton={isModeAdmin}
                     onDelete={(event) => handleCardDelete(event, id)}
-                    onAdd={(event) => handleCardAdd(event, id)}
+                    onAdd={(event) => handleAddButton(event, id)}
                     onClick={() => handleClick(id)}
                     isHoverable={isModeAdmin}
                     isSelected={checkIfProductIsClicked(id, productSelected.id)}
