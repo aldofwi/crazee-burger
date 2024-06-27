@@ -1,43 +1,40 @@
 import { useState } from "react";
 import { fakeBasket } from "../fakeData/fakeBasket";
-import { deepClone, findInArray } from "../utils/array";
+import { deepClone, findInArray, findIndex } from "../utils/array";
 
 export const useBasket = () => {
 
-    const [basket, setBasket] = useState(fakeBasket.SMALL);
+    const [basket, setBasket] = useState(fakeBasket.EMPTY);
 
     // State Handlers
     const handleAddBasket = (newProduct) => { 
-        // 1. [...menu] pas de shallow copy, que en surface
-        const basketCopy = deepClone(basket);
-
+        
+        const basketCopy = deepClone(basket); // 1. [...menu] pas de shallow copy, que en surface
         const isProductAlreadyInBasket = findInArray(newProduct.id, basketCopy) !== undefined;
-        // console.log("isProductAlreadyInBasket :", isProductAlreadyInBasket);
-
-        // 2. manip de la copie du tableau
-
+        
         // 1er cas : Le produit n'est pas dans le Basket.
-        if(!isProductAlreadyInBasket) {
-            const newBasketProduct = {
-                ...newProduct,
-                quantity: 1,
-            }
-         
-            const basketUpdated = [newBasketProduct, ...basketCopy];
-            // 3. update du statut
-            setBasket(basketUpdated);
-            return; 
+        if(!isProductAlreadyInBasket) {  // 2. manip de la copie du tableau
+            createNewProductInBasket(newProduct, basketCopy, setBasket); // 3. update du statut
+            return;
         }
 
-        const indexOfProduct = basket.findIndex(
-        (basketProduct) => basketProduct.id === newProduct.id);
-
-        // console.log("indexOfProduct :", indexOfProduct);
         // 2e cas : Le produit est DEJA dans le basket.
+        incrementProductAlreadyInBasket(newProduct, basketCopy); 
+    }
 
-        basketCopy[indexOfProduct].quantity += 1;
-        // 3. update du statut
-        setBasket(basketCopy);
+    const createNewProductInBasket = (product, someBasket, setBasket) => {
+        const newBasketProduct = {
+            ...product,
+            quantity: 1,
+        };
+        const basketUpdated = [newBasketProduct, ...someBasket];
+        setBasket(basketUpdated);
+    }
+    
+    const incrementProductAlreadyInBasket = (product, someBasket) => {
+        const indexOfProduct = findIndex(product.id, someBasket);
+        someBasket[indexOfProduct].quantity += 1;
+        setBasket(someBasket); // 3. update du statut
     }
 
     const handleDeleteBasket = (idOfDeleteProduct) => { 
