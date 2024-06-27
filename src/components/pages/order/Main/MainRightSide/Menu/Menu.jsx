@@ -1,14 +1,14 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../../../../theme';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { formatPrice } from '/src/utils/maths';
 import EmptyMenuClient from './EmptyMenuClient';
+import { theme } from '../../../../../../theme';
 import { checkIfProductIsClicked } from './helper';
-import OrderContext from '/src/context/OrderContext';
+import { findInArray } from '../../../../../../utils/array';
+import OrderContext from '../../../../../../context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
 import { DEFAULT_IMAGE, DEFAULT_TITLE, EMPTY_PRODUCT } from '../../../../../../enums/product';
-import { findInArray } from '../../../../../../utils/array';
 
 export default function Menu() {
 
@@ -18,6 +18,7 @@ export default function Menu() {
             isModeAdmin,
             handleDeleteMenu,
             handleAddBasket,
+            handleDeleteBasket,
             titleEditRef, 
             setIsCollapsed,
             productSelected,
@@ -45,6 +46,7 @@ export default function Menu() {
         event.stopPropagation();
 
         handleDeleteMenu(idProductToDelete);
+        handleDeleteBasket(idProductToDelete);
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
         titleEditRef.current.focus();
     }
