@@ -10,7 +10,7 @@ import Total from "./Total"
 
 export default function Basket() {
 
-  const { basket } = useContext(OrderContext);
+  const { basket, isModeAdmin, handleDeleteBasket } = useContext(OrderContext);
 
   const isBasketEmpty = basket.length === 0;
 
@@ -24,7 +24,13 @@ export default function Basket() {
     <BasketStyle>
 
         <Total amountToPay={formatPrice(sumToPay)} />
-        {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} />}
+        {isBasketEmpty ? 
+          <EmptyBasket /> : 
+          <BasketProducts 
+            basket={basket} 
+            isModeAdmin={isModeAdmin} 
+            handleDeleteBasket={handleDeleteBasket}
+          />}
         <Footer />
         
     </BasketStyle>

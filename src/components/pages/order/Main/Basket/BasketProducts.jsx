@@ -2,7 +2,13 @@ import { DEFAULT_IMAGE } from "../../../../../enums/product"
 import styled from "styled-components"
 import BasketCard from "./BasketCard"
 
-export default function BasketProducts({ basket }) {
+export default function BasketProducts({ basket, isModeAdmin, handleDeleteBasket }) {
+
+
+    const handleOnDelete = (id) => { 
+        
+        handleDeleteBasket(id);
+     }
 
 
   return (
@@ -13,7 +19,9 @@ export default function BasketProducts({ basket }) {
             <div className="basket-card" key={basketProduct.id}>
                 <BasketCard 
                     {...basketProduct}
-                    imageSource={basketProduct.imageSource ? basketProduct.imageSource : DEFAULT_IMAGE}    
+                    imageSource={basketProduct.imageSource ? basketProduct.imageSource : DEFAULT_IMAGE}
+                    isModeAdmin={isModeAdmin}
+                    onDelete={() => handleOnDelete(basketProduct.id)}
                 />
             </div>
 
