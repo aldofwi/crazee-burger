@@ -89,20 +89,28 @@ const BasketCardStyle = styled.div`
                 align-items: center;
                 font-family: ${theme.fonts.family.stylish};
                 font-weight: ${theme.fonts.weights.bold};
-                font-size: ${theme.fonts.size.P0};
-                color: ${theme.colors.black};
+                font-size: ${theme.fonts.size.P2};
+                color: ${theme.colors.dark};
                 line-height: 32px;
+                min-width: 0;
+                
+                span {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                }
             }
-            // it it ?
+            
             .price {
-                display: flex;
+                /* display: flex;
                 justify-content: flex-start;
                 align-items: center;
                 white-space: nowrap;
                 overflow: hidden;
                 text-overflow: ellipsis;
+                color: ${theme.colors.primary}; */
                 font-weight: ${theme.fonts.weights.medium};
-                color: ${theme.colors.primary};
+                font-size: ${theme.fonts.size.SM};
             }
         }
 
