@@ -15,7 +15,8 @@ export default function Menu() {
     const { menu,
             resetMenu,
             isModeAdmin,
-            handleDelete,
+            handleDeleteMenu,
+            handleAddBasket,
             titleEditRef, 
             setIsCollapsed,
             productSelected,
@@ -33,9 +34,14 @@ export default function Menu() {
         titleEditRef.current.focus();
     }
 
+    const handleCardAdd = (event, idProductToAdd) => {
+        event.stopPropagation();
+        handleAddBasket(menu.find((product) => product.id === idProductToAdd));
+    }
+
     const handleCardDelete = (event, idProductToDelete) => { 
         event.stopPropagation();
-        handleDelete(idProductToDelete);
+        handleDeleteMenu(idProductToDelete);
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
         titleEditRef.current.focus();
     }
@@ -59,6 +65,7 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     hasDeleteButton={isModeAdmin}
                     onDelete={(event) => handleCardDelete(event, id)}
+                    onAdd={(event) => handleCardAdd(event, id)}
                     onClick={() => handleClick(id)}
                     isHoverable={isModeAdmin}
                     isSelected={checkIfProductIsClicked(id, productSelected.id)}

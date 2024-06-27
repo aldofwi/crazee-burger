@@ -1,14 +1,14 @@
 import OrderContext from "../../../../../../../context/OrderContext";
+import EditInfoMessage from "./EditInfoMessage";
 import { useContext } from "react";
 import Form from "./Form";
-import EditInfoMessage from "./EditInfoMessage";
 
 export default function EditForm() {
 
   const { 
       productSelected, 
       setProductSelected, 
-      handleEdit, 
+      handleEditMenu, 
       titleEditRef } = useContext(OrderContext);
 
   // Event Handler (ou gestionnaire d'événements)
@@ -20,7 +20,7 @@ export default function EditForm() {
     };
 
     setProductSelected(produitEnMAJ); // update le formulaire
-    handleEdit(produitEnMAJ); // update le menu
+    handleEditMenu(produitEnMAJ); // update le menu
   }
 
   return (

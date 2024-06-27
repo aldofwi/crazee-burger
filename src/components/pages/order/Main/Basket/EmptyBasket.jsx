@@ -1,18 +1,19 @@
-import styled from "styled-components"
-import { theme } from "../../../../../theme"
+import { theme } from "../../../../../theme";
+import styled from "styled-components";
 
-export default function BasketBody() {
+export default function EmptyBasket() {
 
-  return (
+    return (
+    
+    <EmptyBasketStyle>
+      <span className="empty-message">Votre commande est vide.</span>
+    </EmptyBasketStyle>
+    
+    )
 
-    <BasketBodyStyle>
-        <span className="empty-message">Votre commande est vide.</span>
-    </BasketBodyStyle>
-
-  )
 }
 
-const BasketBodyStyle = styled.div`
+const EmptyBasketStyle = styled.div`
 
     flex: 1;
     box-shadow: ${theme.shadows.basket};

@@ -4,10 +4,10 @@ import { fakeMenu } from "../fakeData/fakeMenu";
 
 export const useMenu = () => {
 
-    const [menu, setMenu] = useState(fakeMenu.SMALL); // Custom Hook
+    const [menu, setMenu] = useState(fakeMenu.LARGE); 
 
-    // State Handler (ou Gestionnaire de states)
-    const handleAdd = (newProduct) => { 
+    // State Handlers (ou Gestionnaires de states)
+    const handleAddMenu = (newProduct) => { 
         // 1. [...menu] pas de shallow copy, que en surface
         const menuCopy = deepClone(menu);
   
@@ -18,7 +18,7 @@ export const useMenu = () => {
         setMenu(menuUpdated);
     }
   
-    const handleEdit = (productBeingEdited) => {
+    const handleEditMenu = (productBeingEdited) => {
       // 1. copy du menu (deep clone)
       const menuCopy = deepClone(menu);
       
@@ -30,7 +30,7 @@ export const useMenu = () => {
       setMenu(menuCopy);
     }
   
-    const handleDelete = (idOfDeleteProduct) => { 
+    const handleDeleteMenu = (idOfDeleteProduct) => { 
       // 1. copy du menu
       const menuCopy = [...menu];
   
@@ -45,5 +45,5 @@ export const useMenu = () => {
       setMenu(fakeMenu.MEDIUM);
     }
 
-    return {menu, setMenu, handleAdd, handleEdit, handleDelete, resetMenu}
+    return {menu, setMenu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu}
 }

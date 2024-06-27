@@ -6,6 +6,7 @@ import { theme } from '../../../theme';
 import styled from 'styled-components';
 import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
+import { useBasket } from '../../../hooks/useBasket';
 
 export default function OrderPage() {
 
@@ -17,7 +18,8 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
 
-  const {menu, setMenu, handleAdd, handleEdit, handleDelete, resetMenu} = useMenu();
+  const {menu, setMenu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu} = useMenu();
+  const {basket, setBasket, handleAddBasket, handleDeleteBasket} = useBasket();
 
   const orderContextValue = {
     isModeAdmin,
@@ -28,9 +30,13 @@ export default function OrderPage() {
     setCurrentTabSelected,
     menu,
     resetMenu,
-    handleAdd,
-    handleEdit,
-    handleDelete,
+    handleAddMenu,
+    handleEditMenu,
+    handleDeleteMenu,
+    basket,
+    setBasket,
+    handleAddBasket,
+    handleDeleteBasket,
     titleEditRef,
     newProduct, 
     setNewProduct,

@@ -1,14 +1,15 @@
 import styled, { css } from 'styled-components'
-import Button from './Button'
 import { TiDelete } from 'react-icons/ti';
 import { theme } from '../../theme'
+import Button from './Button'
 
 export default function ProductCard({ 
     title,  
     imageSource,  
     leftDescription, 
     hasDeleteButton, 
-    onDelete, 
+    onDelete,
+    onAdd, 
     onClick, 
     isHoverable,
     isSelected }) {
@@ -37,7 +38,7 @@ export default function ProductCard({
           <div className="description">
             <div className="left-description">{leftDescription}
               <div className="right-description">
-                <Button className="primary-button" label="Ajouter" onClick={(event) => event.stopPropagation()} />
+                <Button className="primary-button" label="Ajouter" onClick={onAdd} />
               </div>
             </div>
       
@@ -144,7 +145,6 @@ const ProductCardStyled = styled.div`
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            font-weight: ${theme.fonts.weights.medium};
             color: ${theme.colors.primary};
           }
 
