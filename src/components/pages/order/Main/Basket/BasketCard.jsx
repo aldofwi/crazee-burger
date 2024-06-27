@@ -131,7 +131,7 @@ const BasketCardStyle = styled.div`
     }
 
     :hover {
-        .delete-button-pokemon {
+        .delete-button {
             bottom: none;
             box-sizing: border-box;
             position: absolute;
@@ -156,7 +156,7 @@ const BasketCardStyle = styled.div`
         }
 
         :hover {
-            text-decoration: underline;
+            //text-decoration: underline;
 
             .icon {
                 color: ${theme.colors.black};
