@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import styled from 'styled-components';
-import { theme } from '../../../../../../theme';
 import EmptyMenuAdmin from './EmptyMenuAdmin';
 import { formatPrice } from '/src/utils/maths';
 import EmptyMenuClient from './EmptyMenuClient';
+import { theme } from '../../../../../../theme';
 import { checkIfProductIsClicked } from './helper';
-import OrderContext from '/src/context/OrderContext';
+import { findInArray } from '../../../../../../utils/array';
+import OrderContext from '../../../../../../context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
 import { DEFAULT_IMAGE, DEFAULT_TITLE, EMPTY_PRODUCT } from '../../../../../../enums/product';
 
@@ -15,7 +16,9 @@ export default function Menu() {
     const { menu,
             resetMenu,
             isModeAdmin,
-            handleDelete,
+            handleDeleteMenu,
+            handleAddBasket,
+            handleDeleteBasket,
             titleEditRef, 
             setIsCollapsed,
             productSelected,
@@ -28,14 +31,22 @@ export default function Menu() {
 
         await setIsCollapsed(false);
         await setCurrentTabSelected("edit");
-        const productClickedOn = menu.find((product) => product.id === idProductClicked);
+        const productClickedOn = findInArray(idProductClicked, menu);
         await setProductSelected(productClickedOn);
         titleEditRef.current.focus();
     }
 
+    const handleAddButton = (event, idProductToAdd) => {
+        event.stopPropagation();
+        
+        handleAddBasket(findInArray(idProductToAdd, menu));
+    }
+
     const handleCardDelete = (event, idProductToDelete) => { 
         event.stopPropagation();
-        handleDelete(idProductToDelete);
+
+        handleDeleteMenu(idProductToDelete);
+        handleDeleteBasket(idProductToDelete);
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
         titleEditRef.current.focus();
     }
@@ -59,6 +70,7 @@ export default function Menu() {
                     leftDescription={formatPrice(price)}
                     hasDeleteButton={isModeAdmin}
                     onDelete={(event) => handleCardDelete(event, id)}
+                    onAdd={(event) => handleAddButton(event, id)}
                     onClick={() => handleClick(id)}
                     isHoverable={isModeAdmin}
                     isSelected={checkIfProductIsClicked(id, productSelected.id)}
