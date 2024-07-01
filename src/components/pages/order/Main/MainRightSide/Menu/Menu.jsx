@@ -29,9 +29,9 @@ export default function Menu() {
     const handleClick = async (idProductClicked) => { 
         if(!isModeAdmin) return; // attendre le comp soit créé pr fr focus.
 
+        const productClickedOn = findObjectById(idProductClicked, menu);
         await setIsCollapsed(false);
         await setCurrentTabSelected("edit");
-        const productClickedOn = findObjectById(idProductClicked, menu);
         await setProductSelected(productClickedOn);
         titleEditRef.current.focus();
     }
@@ -40,7 +40,6 @@ export default function Menu() {
         event.stopPropagation();
         
         handleAddBasket(idProductToAdd);
-        //handleAddBasket(findObjectById(idProductToAdd, menu));
     }
 
     const handleCardDelete = (event, idProductToDelete) => { 
@@ -49,7 +48,6 @@ export default function Menu() {
         handleDeleteMenu(idProductToDelete);
         handleDeleteBasket(idProductToDelete);
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
-        titleEditRef.current.focus();
     }
 
     // Affichage
