@@ -28,7 +28,8 @@ export default function BasketProducts() {
         titleEditRef.current.focus();
      }
 
-    const handleOnDelete = (id) => { 
+    const handleOnDelete = (event, id) => {
+        event.stopPropagation();
         handleDeleteBasket(id);
     }
 
@@ -49,7 +50,7 @@ export default function BasketProducts() {
                     isHoverable={isModeAdmin}
                     isSelected={checkIfProductIsClicked(menuProduct.id, productSelected.id)}
                     onClick={() => handleClick(menuProduct.id)}
-                    onDelete={() => handleOnDelete(menuProduct.id)}
+                    onDelete={(event) => handleOnDelete(event, basketProduct.id)}
                 />
             </div>
 
