@@ -1,31 +1,60 @@
-import { DEFAULT_IMAGE } from "../../../../../enums/product"
-import styled from "styled-components"
-import BasketCard from "./BasketCard"
+import { checkIfProductIsClicked } from "../MainRightSide/Menu/helper";
+import OrderContext from "../../../../../context/OrderContext";
+import { DEFAULT_IMAGE } from "../../../../../enums/product";
+import { findObjectById } from "../../../../../utils/array";
+import styled from "styled-components";
+import BasketCard from "./BasketCard";
+import { useContext } from "react";
 
-export default function BasketProducts({ basket, isModeAdmin, handleDeleteBasket }) {
+export default function BasketProducts() {
 
+    const { menu, 
+            basket, 
+            isModeAdmin, 
+            titleEditRef, 
+            setIsCollapsed, 
+            productSelected,
+            setProductSelected, 
+            setCurrentTabSelected, 
+            handleDeleteBasket } = useContext(OrderContext);
 
-    const handleOnDelete = (id) => { 
-        
-        handleDeleteBasket(id);
+    const handleClick = async (idBasketProductClicked) => { 
+        if(!isModeAdmin) return; // attendre le comp soit créé pr fr focus.
+
+        await setIsCollapsed(false);
+        await setCurrentTabSelected("edit");
+        const basketProductClickedOn = findObjectById(idBasketProductClicked, menu);
+        await setProductSelected(basketProductClickedOn);
+        titleEditRef.current.focus();
      }
 
+    const handleOnDelete = (id) => { 
+        handleDeleteBasket(id);
+    }
 
   return (
 
     <BasketProductsStyle>
-        {basket.map((basketProduct) => (
+        {basket.map((basketProduct) => {
+            const menuProduct = findObjectById(basketProduct.id, menu);
+
+            return(
 
             <div className="basket-card" key={basketProduct.id}>
-                <BasketCard 
-                    {...basketProduct}
-                    imageSource={basketProduct.imageSource ? basketProduct.imageSource : DEFAULT_IMAGE}
-                    isModeAdmin={isModeAdmin}
-                    onDelete={() => handleOnDelete(basketProduct.id)}
+                <BasketCard
+                    {...menuProduct}
+                    imageSource={menuProduct.imageSource ? menuProduct.imageSource : DEFAULT_IMAGE}
+                    quantity={basketProduct.quantity}
+                    isClickable={isModeAdmin}
+                    isHoverable={isModeAdmin}
+                    isSelected={checkIfProductIsClicked(menuProduct.id, productSelected.id)}
+                    onClick={() => handleClick(menuProduct.id)}
+                    onDelete={() => handleOnDelete(menuProduct.id)}
                 />
             </div>
 
-        ))}
+            )
+        })}
     </BasketProductsStyle>
 
   )

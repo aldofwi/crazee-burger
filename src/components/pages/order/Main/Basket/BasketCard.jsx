@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import { theme } from "../../../../../theme"
 import { MdDeleteForever } from "react-icons/md"
 import { formatPrice } from "../../../../../utils/maths"
@@ -8,14 +8,22 @@ export default function BasketCard({
     price, 
     quantity,
     imageSource,
-    isModeAdmin,
+    isClickable,
+    isHoverable,
+    isSelected,
     className,
-    onDelete }) {
+    onDelete,
+    onClick }) {
 
   return (
 
-    <BasketCardStyle className={className}>
-
+    <BasketCardStyle 
+        onClick={onClick} 
+        className={className} 
+        isSelected={isSelected} 
+        isHoverable={isHoverable}
+        isClickable={isClickable} 
+    >
         <div className="delete-button" onClick={onDelete}>
             <MdDeleteForever className="icon" />
         </div>
@@ -45,7 +53,7 @@ export default function BasketCard({
 
 const BasketCardStyle = styled.div`
 
-    cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
+    cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
 
     //border: 1px solid red;
     box-sizing: border-box;
@@ -57,8 +65,9 @@ const BasketCardStyle = styled.div`
     grid-template-columns: 30% 1fr;
 
     border-radius: ${theme.borderRadius.round};
-    background: ${theme.colors.white};
     box-shadow: ${theme.shadows.cardBasket};
+    background: ${theme.colors.white};
+    //background: ${theme.colors.primary};
 
     position: relative;
 
@@ -106,13 +115,7 @@ const BasketCardStyle = styled.div`
             }
             
             .price {
-                /* display: flex;
-                justify-content: flex-start;
-                align-items: center;
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                color: ${theme.colors.primary}; */
+                font-family: ${theme.fonts.family.openSans};
                 font-weight: ${theme.fonts.weights.medium};
                 font-size: ${theme.fonts.size.SM};
             }
@@ -136,7 +139,7 @@ const BasketCardStyle = styled.div`
 
     :hover {
         .delete-button {
-            bottom: none;
+            border: none;
             box-sizing: border-box;
             position: absolute;
             top: 0;
@@ -153,10 +156,10 @@ const BasketCardStyle = styled.div`
             color: ${theme.colors.white};
             cursor: pointer;
 
-        .icon {
-            width: ${theme.fonts.size.P3};
-            height: ${theme.fonts.size.P3};
-        }
+            .icon {
+                width: ${theme.fonts.size.P3};
+                height: ${theme.fonts.size.P3};
+            }
 
             :hover {
                 .icon {
@@ -171,4 +174,14 @@ const BasketCardStyle = styled.div`
             }
         }
     }
+
+    ${({ isHoverable, isSelected }) => isHoverable && isSelected && selectedStyle }
+`
+
+const selectedStyle = css`
+  background: ${theme.colors.primary};
+
+  .text-info {
+    color: ${theme.colors.white};
+  }
 `

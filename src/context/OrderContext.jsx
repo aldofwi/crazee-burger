@@ -18,6 +18,7 @@ export default createContext({
     handleDeleteMenu: () => {},
 
     handleAddBasket: () => {},
+    handleEditBasket: () => {},
     handleDeleteBasket: () => {},
 
     titleEditRef: {},

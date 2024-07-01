@@ -8,7 +8,8 @@ export default function EditForm() {
   const { 
       productSelected, 
       setProductSelected, 
-      handleEditMenu, 
+      handleEditMenu,
+      handleEditBasket,
       titleEditRef } = useContext(OrderContext);
 
   // Event Handler (ou gestionnaire d'événements)
@@ -16,11 +17,14 @@ export default function EditForm() {
     const {name, value} = event.target;
     const produitEnMAJ = {
       ...productSelected,
-      [name]: value,
+      [name]: value
     };
+
+    // console.log("productSelected :", productSelected);
 
     setProductSelected(produitEnMAJ); // update le formulaire
     handleEditMenu(produitEnMAJ); // update le menu
+    // handleEditBasket(produitEnMAJ); // update le panier
   }
 
   return (

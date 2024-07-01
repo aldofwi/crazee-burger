@@ -1,5 +1,6 @@
+import { calculateSumToPay, formatPrice } from "../../../../../utils/maths"
 import OrderContext from "../../../../../context/OrderContext"
-import { formatPrice } from "../../../../../utils/maths"
+import { isEmpty } from "../../../../../utils/array"
 import BasketProducts from "./BasketProducts"
 import { theme } from "../../../../../theme"
 import EmptyBasket from "./EmptyBasket"
@@ -10,27 +11,15 @@ import Total from "./Total"
 
 export default function Basket() {
 
-  const { basket, isModeAdmin, handleDeleteBasket } = useContext(OrderContext);
-
-  const isBasketEmpty = basket.length === 0;
-
-  const sumToPay = basket.reduce((total, basketProduct) => {
-    if(isNaN(basketProduct.price)) return total;
-    total += basketProduct.quantity * basketProduct.price;
-    return total
-  }, 0);
+  const { basket } = useContext(OrderContext);
 
   return (
     <BasketStyle>
 
-        <Total amountToPay={formatPrice(sumToPay)} />
-        {isBasketEmpty ? 
+        <Total />
+        {isEmpty(basket) ? 
           <EmptyBasket /> : 
-          <BasketProducts 
-            basket={basket} 
-            isModeAdmin={isModeAdmin} 
-            handleDeleteBasket={handleDeleteBasket}
-          />}
+          <BasketProducts />}
         <Footer />
         
     </BasketStyle>
@@ -57,3 +46,4 @@ const BasketStyle = styled.div`
       bottom: 0;
     }
 `
+

@@ -1,41 +1,56 @@
 import { useState } from "react";
 import { fakeBasket } from "../fakeData/fakeBasket";
-import { deepClone, findInArray, findIndex } from "../utils/array";
+import { deepClone, findObjectById, findIndexById } from "../utils/array";
 
 export const useBasket = () => {
 
     const [basket, setBasket] = useState(fakeBasket.EMPTY);
-
+    
     // State Handlers
-    const handleAddBasket = (newProduct) => { 
+    const handleAddBasket = (idProductToAdd) => { 
         
-        const basketCopy = deepClone(basket); // 1. [...menu] pas de shallow copy, que en surface
-        const isProductAlreadyInBasket = findInArray(newProduct.id, basketCopy) !== undefined;
-        
-        // 1er cas : Le produit n'est pas dans le Basket.
-        if(!isProductAlreadyInBasket) {  // 2. manip de la copie du tableau
-            createNewProductInBasket(newProduct, basketCopy, setBasket); // 3. update du statut
-            return;
+        // 1. [...menu] pas de shallow copy, que en surface
+        const basketCopy = deepClone(basket);
+        const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy);
+
+        if(productAlreadyInBasket) {
+            incrementProductAlreadyInBasket(idProductToAdd, basketCopy);
+            return
         }
 
-        // 2e cas : Le produit est DEJA dans le basket.
-        incrementProductAlreadyInBasket(newProduct, basketCopy); 
+        createNewProductInBasket(idProductToAdd, basketCopy, setBasket);
     }
 
-    const createNewProductInBasket = (product, someBasket, setBasket) => {
+    const createNewProductInBasket = (idProductToAdd, someBasket, setBasket) => {
+        // Just adding extra info into basket from the menu product.
+        // 2. manip de la copie du tableau
         const newBasketProduct = {
-            ...product,
+            id: idProductToAdd,
             quantity: 1,
-        };
-        const basketUpdated = [newBasketProduct, ...someBasket];
-        setBasket(basketUpdated);
+        }
+        const newBasket = [newBasketProduct, ...someBasket];
+
+        // 3. update du statut  
+        setBasket(newBasket);
     }
     
-    const incrementProductAlreadyInBasket = (product, someBasket) => {
-        const indexOfProduct = findIndex(product.id, someBasket);
+    const incrementProductAlreadyInBasket = (idProductToAdd, someBasket) => {
+        const indexOfProduct = findIndexById(idProductToAdd, someBasket);
         someBasket[indexOfProduct].quantity += 1;
         setBasket(someBasket); // 3. update du statut
     }
+
+    const handleEditBasket = (productBeingEdited) => { 
+        // 1. copy du menu (deep clone)
+        const basketCopy = deepClone(basket);
+
+        // 2. manip de la copie du tableau
+        const indexOfBasketToUpdate = findIndexById(productBeingEdited.id, basket);
+        basketCopy[indexOfBasketToUpdate] = productBeingEdited;
+
+        // 3. update du statut
+        setBasket(basketCopy);
+     }
 
     const handleDeleteBasket = (idOfDeleteProduct) => { 
         // 1. [...menu] pas de shallow copy, que en surface
@@ -48,5 +63,5 @@ export const useBasket = () => {
         setBasket(basketUpdated);
     }
 
-    return {basket, handleAddBasket, handleDeleteBasket}
+    return {basket, handleAddBasket, handleEditBasket, handleDeleteBasket}
 }

@@ -5,7 +5,7 @@ import { formatPrice } from '/src/utils/maths';
 import EmptyMenuClient from './EmptyMenuClient';
 import { theme } from '../../../../../../theme';
 import { checkIfProductIsClicked } from './helper';
-import { findInArray } from '../../../../../../utils/array';
+import { findObjectById, isEmpty } from '../../../../../../utils/array';
 import OrderContext from '../../../../../../context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
 import { DEFAULT_IMAGE, DEFAULT_TITLE, EMPTY_PRODUCT } from '../../../../../../enums/product';
@@ -31,7 +31,7 @@ export default function Menu() {
 
         await setIsCollapsed(false);
         await setCurrentTabSelected("edit");
-        const productClickedOn = findInArray(idProductClicked, menu);
+        const productClickedOn = findObjectById(idProductClicked, menu);
         await setProductSelected(productClickedOn);
         titleEditRef.current.focus();
     }
@@ -39,7 +39,8 @@ export default function Menu() {
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation();
         
-        handleAddBasket(findInArray(idProductToAdd, menu));
+        handleAddBasket(idProductToAdd);
+        //handleAddBasket(findObjectById(idProductToAdd, menu));
     }
 
     const handleCardDelete = (event, idProductToDelete) => { 
@@ -52,7 +53,7 @@ export default function Menu() {
     }
 
     // Affichage
-    if(menu.length === 0) {
+    if(isEmpty(menu)) {
         if(!isModeAdmin) return <EmptyMenuClient />
         return <EmptyMenuAdmin onReset={resetMenu} />
     }
