@@ -4,6 +4,7 @@ import SubmitButton from "./SubmitButton";
 import OrderContext from '/src/context/OrderContext';
 import { EMPTY_PRODUCT } from "../../../../../../../enums/product";
 import { useSuccessMsg } from "../../../../../../../hooks/useDisplaySuccessMsg";
+import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths";
 
 export default function AddForm() {
 
@@ -16,6 +17,7 @@ export default function AddForm() {
       const newProduitToAdd = {
         ...newProduct,
         id: crypto.randomUUID(),
+        price: replaceFrenchCommaWithDot(newProduct.price),
       }
     handleAddMenu(newProduitToAdd);
     setNewProduct(EMPTY_PRODUCT);
