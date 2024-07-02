@@ -18,8 +18,8 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
 
-  const {menu, setMenu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu} = useMenu();
-  const {basket, setBasket, handleAddBasket, handleDeleteBasket} = useBasket();
+  const {menu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu} = useMenu();
+  const {basket, handleAddBasket, handleEditBasket, handleDeleteBasket} = useBasket();
 
   const orderContextValue = {
     isModeAdmin,
@@ -34,8 +34,8 @@ export default function OrderPage() {
     handleEditMenu,
     handleDeleteMenu,
     basket,
-    setBasket,
     handleAddBasket,
+    handleEditBasket,
     handleDeleteBasket,
     titleEditRef,
     newProduct, 

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { deepClone } from "../utils/array";
 import { fakeMenu } from "../fakeData/fakeMenu";
+import { deepClone, findIndexById } from "../utils/array";
 
 export const useMenu = () => {
 
@@ -23,8 +23,8 @@ export const useMenu = () => {
       const menuCopy = deepClone(menu);
       
       // 2. manip de la copie du tableau
-      const indexOfMenuToUpdated = menu.findIndex((product) => product.id === productBeingEdited.id);
-      menuCopy[indexOfMenuToUpdated] = productBeingEdited;
+      const indexOfMenuToUpdate = findIndexById(productBeingEdited.id, menu);
+      menuCopy[indexOfMenuToUpdate] = productBeingEdited;
       
       // 3. update du statut
       setMenu(menuCopy);
@@ -45,5 +45,5 @@ export const useMenu = () => {
       setMenu(fakeMenu.MEDIUM);
     }
 
-    return {menu, setMenu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu}
+    return {menu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu}
 }

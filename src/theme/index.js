@@ -52,6 +52,7 @@ const fonts = {
     heavy: 800,
   },
   family: {
+    openSans: '"Open Sans"',
     stylish: '"Amatic SC", cursive',
   }
 }
