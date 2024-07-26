@@ -46,8 +46,7 @@ export default function OrderPage() {
   }
 
   //console.log("import.meta.env.REACT_APP_API_KEY = ", import.meta.env.VITE_APP_API_KEY);
-
-  getUser("Alex");
+  //getUser("Alex");
 
 
   return (

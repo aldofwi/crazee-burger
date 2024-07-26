@@ -5,13 +5,12 @@ import { db } from "./firebase-config";
 export const getUser = async (idUser) => { 
     
     const docRef = doc(db, "users", idUser);
-
     const docSnapshot = await getDoc(docRef);
     //console.log("docSnapshot.exists() : ", docSnapshot.exists());
 
     if(docSnapshot.exists()) {
         const userReceived = docSnapshot.data();
-        //console.log("userReceived : ", userReceived);
+        return userReceived;
     }
  }
 
@@ -21,8 +20,20 @@ export const getUser = async (idUser) => {
     
     const content = {
         username: userId,
-        menu: fakeMenu.LARGE,
+        menu: fakeMenu.SMALL,
     }
     
     setDoc(docRef, content);
   }
+
+  export const authenticateUser = async (userId) => { 
+
+      // 1. Récupère un user.
+      const existingUser = await getUser(userId);
+      //console.log("existingUser = ", existingUser);
+
+      // 2. Sinon crée un new user.
+      if(!existingUser) {
+        createUser(userId);
+      }
+ }
