@@ -30,6 +30,7 @@ export const useMenu = () => {
       
       // 3. update du statut
       setMenu(menuCopy);
+      
     }
   
     const handleDeleteMenu = (idOfDeleteProduct, username) => { 
