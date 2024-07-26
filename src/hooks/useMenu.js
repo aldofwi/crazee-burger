@@ -30,7 +30,7 @@ export const useMenu = () => {
       
       // 3. update du statut
       setMenu(menuCopy);
-      
+
     }
   
     const handleDeleteMenu = (idOfDeleteProduct, username) => { 
@@ -49,5 +49,5 @@ export const useMenu = () => {
       setMenu(fakeMenu.MEDIUM);
     }
 
-    return {menu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu}
+    return {menu, setMenu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu}
 }

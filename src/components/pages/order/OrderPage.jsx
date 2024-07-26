@@ -9,6 +9,8 @@ import Main from './Main/Main';
 import { useBasket } from '../../../hooks/useBasket';
 import { getUser } from '../../../api/user';
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { getMenu } from '../../../api/product';
 
 export default function OrderPage() {
 
@@ -21,8 +23,19 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
   const {username} = useParams();
 
-  const {menu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu} = useMenu();
+  const {menu, setMenu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu} = useMenu();
   const {basket, handleAddBasket, handleEditBasket, handleDeleteBasket} = useBasket();
+
+  const initializeMenu = async () => {
+
+    const menuReceived = await getMenu(username);
+    //console.log("menuReceived = ", menuReceived);
+    setMenu(menuReceived);
+  }
+
+  useEffect(() => {
+    initializeMenu()
+  }, []);
 
   const orderContextValue = {
     username,
