@@ -7,6 +7,7 @@ import styled from 'styled-components';
 import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import { useBasket } from '../../../hooks/useBasket';
+import { getUser } from '../../../api/user';
 
 export default function OrderPage() {
 
@@ -43,6 +44,11 @@ export default function OrderPage() {
     productSelected, 
     setProductSelected
   }
+
+  //console.log("import.meta.env.REACT_APP_API_KEY = ", import.meta.env.VITE_APP_API_KEY);
+
+  getUser("Alex");
+
 
   return (
 

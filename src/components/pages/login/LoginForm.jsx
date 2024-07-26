@@ -6,6 +6,7 @@ import TextInput from '../../reusable-ui/TextInput';
 import Button from '../../reusable-ui/Button';
 import styled from 'styled-components';
 import { theme } from '../../../theme';
+import { createUser } from '../../../api/user';
 
 
 export default function LoginForm() {
@@ -14,6 +15,8 @@ export default function LoginForm() {
     const navigate = useNavigate();
 
     const handleSubmit = () => { 
+      createUser(name);
+
       navigate(`order/${name}`);
       setName("");
      }
