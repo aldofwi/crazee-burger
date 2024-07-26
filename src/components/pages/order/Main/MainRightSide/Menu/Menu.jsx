@@ -19,6 +19,7 @@ export default function Menu() {
             handleDeleteMenu,
             handleAddBasket,
             handleDeleteBasket,
+            username,
             titleEditRef, 
             setIsCollapsed,
             productSelected,
@@ -45,7 +46,7 @@ export default function Menu() {
     const handleCardDelete = (event, idProductToDelete) => { 
         event.stopPropagation();
 
-        handleDeleteMenu(idProductToDelete);
+        handleDeleteMenu(idProductToDelete, username);
         handleDeleteBasket(idProductToDelete);
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
     }

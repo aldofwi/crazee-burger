@@ -30,7 +30,7 @@ export const getUser = async (idUser) => {
 
       // 1. Récupère un user.
       const existingUser = await getUser(userId);
-      //console.log("existingUser = ", existingUser);
+      console.log("existingUser = ", existingUser);
 
       // 2. Sinon crée un new user.
       if(!existingUser) {

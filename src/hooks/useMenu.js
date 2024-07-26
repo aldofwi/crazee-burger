@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { syncBothMenus } from "../api/product";
 import { fakeMenu } from "../fakeData/fakeMenu";
 import { deepClone, findIndexById } from "../utils/array";
 
@@ -7,7 +8,7 @@ export const useMenu = () => {
     const [menu, setMenu] = useState(fakeMenu.MEDIUM); 
 
     // State Handlers (ou Gestionnaires de states)
-    const handleAddMenu = (newProduct) => { 
+    const handleAddMenu = (newProduct, username) => { 
         // 1. [...menu] pas de shallow copy, que en surface
         const menuCopy = deepClone(menu);
   
@@ -16,6 +17,7 @@ export const useMenu = () => {
   
         // 3. update du statut
         setMenu(menuUpdated);
+        syncBothMenus(username, menuUpdated);
     }
   
     const handleEditMenu = (productBeingEdited) => {
@@ -30,7 +32,7 @@ export const useMenu = () => {
       setMenu(menuCopy);
     }
   
-    const handleDeleteMenu = (idOfDeleteProduct) => { 
+    const handleDeleteMenu = (idOfDeleteProduct, username) => { 
       // 1. copy du menu
       const menuCopy = [...menu];
   
@@ -39,6 +41,7 @@ export const useMenu = () => {
   
       // 3. update du statut
       setMenu(menuUpdated);
+      syncBothMenus(username, menuUpdated);
     }
   
     const resetMenu = () => { 
