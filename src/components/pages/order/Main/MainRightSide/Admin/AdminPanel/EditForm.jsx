@@ -6,6 +6,7 @@ import Form from "./Form";
 export default function EditForm() {
 
   const { 
+      username,
       productSelected, 
       setProductSelected, 
       handleEditMenu,
@@ -21,9 +22,8 @@ export default function EditForm() {
     };
 
     // console.log("productSelected :", productSelected);
-
     setProductSelected(produitEnMAJ); // update le formulaire
-    handleEditMenu(produitEnMAJ); // update le menu
+    handleEditMenu(produitEnMAJ, username); // update le menu
     // handleEditBasket(produitEnMAJ); // update le panier
   }
 
