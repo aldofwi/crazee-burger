@@ -1,8 +1,9 @@
 import OrderContext from "../../../../../../../context/OrderContext";
+import { useSuccessMsg } from "../../../../../../../hooks/useDisplaySuccessMsg";
 import EditInfoMessage from "./EditInfoMessage";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import Form from "./Form";
-
+import SavingMessage from "./SavingMessage";
 export default function EditForm() {
 
   const { 
@@ -13,6 +14,9 @@ export default function EditForm() {
       handleEditBasket,
       titleEditRef } = useContext(OrderContext);
 
+  const [valueOnFocus, setValueOnFocus] = useState();
+  const {isSubmitted : isSaved, displaySuccessMsg} = useSuccessMsg();
+
   // Event Handler (ou gestionnaire d'événements)
   const handleChange = (event) => { 
     const {name, value} = event.target;
@@ -22,18 +26,37 @@ export default function EditForm() {
     };
 
     // console.log("productSelected :", productSelected);
+    // handleEditBasket(produitEnMAJ); // update le panier
+
     setProductSelected(produitEnMAJ); // update le formulaire
     handleEditMenu(produitEnMAJ, username); // update le menu
-    // handleEditBasket(produitEnMAJ); // update le panier
+  }
+
+  const handleOnFocus = (event) => { 
+    const inputValueOnFocus = event.target.value;
+    setValueOnFocus(inputValueOnFocus);
+    console.log('inputValueOnFocus : ', inputValueOnFocus);
+  }
+
+  const handleOnBlur = (event) => { 
+    const valueOnBlur = event.target.value;
+    if(valueOnFocus !== valueOnBlur) displaySuccessMsg();
   }
 
   return (
         <Form 
           product={productSelected} 
           onChange={handleChange} 
+          onFocus={handleOnFocus}
+          onBlur={handleOnBlur}
           ref={titleEditRef}>
 
-            <EditInfoMessage />
+            {
+              !isSaved ?
+              <EditInfoMessage />
+                    :
+              <SavingMessage />
+            }
         </Form>
   )
 }
