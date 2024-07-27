@@ -25,9 +25,6 @@ export default function EditForm() {
       [name]: value
     };
 
-    // console.log("productSelected :", productSelected);
-    // handleEditBasket(produitEnMAJ); // update le panier
-
     setProductSelected(produitEnMAJ); // update le formulaire
     handleEditMenu(produitEnMAJ, username); // update le menu
   }
@@ -35,7 +32,6 @@ export default function EditForm() {
   const handleOnFocus = (event) => { 
     const inputValueOnFocus = event.target.value;
     setValueOnFocus(inputValueOnFocus);
-    console.log('inputValueOnFocus : ', inputValueOnFocus);
   }
 
   const handleOnBlur = (event) => { 

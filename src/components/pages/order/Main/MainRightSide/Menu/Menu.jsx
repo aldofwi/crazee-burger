@@ -41,7 +41,7 @@ export default function Menu() {
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation();
         
-        handleAddBasket(idProductToAdd);
+        handleAddBasket(idProductToAdd, username);
     }
 
     const handleCardDelete = (event, idProductToDelete) => { 
