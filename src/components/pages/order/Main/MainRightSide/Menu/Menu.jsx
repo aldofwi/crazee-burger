@@ -9,6 +9,7 @@ import { findObjectById, isEmpty } from '../../../../../../utils/array';
 import OrderContext from '../../../../../../context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
 import { DEFAULT_IMAGE, DEFAULT_TITLE, EMPTY_PRODUCT } from '../../../../../../enums/product';
+import Loader from './Loader';
 
 export default function Menu() {
 
@@ -52,6 +53,8 @@ export default function Menu() {
     }
 
     // Affichage
+    if(!menu) return <Loader />
+
     if(isEmpty(menu)) {
         if(!isModeAdmin) return <EmptyMenuClient />
         return <EmptyMenuAdmin onReset={resetMenu} />

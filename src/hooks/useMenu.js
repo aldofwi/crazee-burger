@@ -5,7 +5,7 @@ import { deepClone, findIndexById } from "../utils/array";
 
 export const useMenu = () => {
 
-    const [menu, setMenu] = useState(fakeMenu.MEDIUM); 
+    const [menu, setMenu] = useState(); 
 
     // State Handlers (ou Gestionnaires de states)
     const handleAddMenu = (newProduct, username) => { 
