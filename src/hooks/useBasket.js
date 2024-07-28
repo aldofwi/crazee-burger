@@ -56,7 +56,7 @@ export const useBasket = () => {
         //setLocalStorage(username, basketCopy);
      }
 
-    const handleDeleteBasket = (idOfDeleteProduct) => { 
+    const handleDeleteBasket = (idOfDeleteProduct, username) => { 
         // 1. [...menu] pas de shallow copy, que en surface
         const basketCopy = [...basket];
 
@@ -65,6 +65,7 @@ export const useBasket = () => {
 
         // 3. update du statut
         setBasket(basketUpdated);
+        setLocalStorage(username, basketUpdated);
     }
 
     return {basket, setBasket, handleAddBasket, handleEditBasket, handleDeleteBasket}
