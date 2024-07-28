@@ -11,6 +11,7 @@ import { getUser } from '../../../api/user';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { getMenu } from '../../../api/product';
+import { getLocalStorage } from '../../../utils/window';
 
 export default function OrderPage() {
 
@@ -24,17 +25,25 @@ export default function OrderPage() {
   const {username} = useParams();
 
   const {menu, setMenu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu} = useMenu();
-  const {basket, handleAddBasket, handleEditBasket, handleDeleteBasket} = useBasket();
+  const {basket, setBasket, handleAddBasket, handleEditBasket, handleDeleteBasket} = useBasket();
 
   const initializeMenu = async () => {
-
     const menuReceived = await getMenu(username);
-    //console.log("menuReceived = ", menuReceived);
     setMenu(menuReceived);
   }
 
+  const initializeBasket = () => { 
+    const basketReceived = getLocalStorage(username); // asynchrone : no need await
+    console.log("basketReceived :", basketReceived);
+    setBasket(basketReceived);
+   }
+
   useEffect(() => {
     initializeMenu()
+  }, []);
+
+  useEffect(() => {
+    initializeBasket()
   }, []);
 
   const orderContextValue = {

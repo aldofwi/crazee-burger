@@ -5,7 +5,7 @@ import { setLocalStorage } from "../utils/window";
 
 export const useBasket = () => {
 
-    const [basket, setBasket] = useState(fakeBasket.EMPTY);
+    const [basket, setBasket] = useState([]);
     
     // State Handlers
     const handleAddBasket = (idProductToAdd, username) => { 
@@ -67,5 +67,5 @@ export const useBasket = () => {
         setBasket(basketUpdated);
     }
 
-    return {basket, handleAddBasket, handleEditBasket, handleDeleteBasket}
+    return {basket, setBasket, handleAddBasket, handleEditBasket, handleDeleteBasket}
 }
