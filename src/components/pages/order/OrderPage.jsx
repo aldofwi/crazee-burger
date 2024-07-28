@@ -7,7 +7,6 @@ import styled from 'styled-components';
 import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import { useBasket } from '../../../hooks/useBasket';
-import { getUser } from '../../../api/user';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { initializeUserSession } from './helpers/initializeUserSession';
@@ -29,6 +28,9 @@ export default function OrderPage() {
   useEffect(() => {
     initializeUserSession(username, setMenu, setBasket);
   }, []);
+
+  useEffect(() => {}, [])
+  
 
   const orderContextValue = {
     username,
@@ -53,10 +55,6 @@ export default function OrderPage() {
     productSelected, 
     setProductSelected
   }
-
-  //console.log("import.meta.env.REACT_APP_API_KEY = ", import.meta.env.VITE_APP_API_KEY);
-  //getUser("Alex");
-
 
   return (
 

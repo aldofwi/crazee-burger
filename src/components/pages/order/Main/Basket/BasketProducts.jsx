@@ -31,7 +31,7 @@ export default function BasketProducts() {
 
     const handleOnDelete = (event, id) => {
         event.stopPropagation();
-        handleDeleteBasket(username, id);
+        handleDeleteBasket(id, username);
     }
 
   return (

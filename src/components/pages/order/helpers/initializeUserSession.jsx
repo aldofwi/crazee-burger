@@ -12,6 +12,6 @@ import { getLocalStorage } from "../../../../utils/window";
    }
 
 export const initializeUserSession = async (username, setMenu, setBasket) => { 
-    await initializeMenu(username, setMenu)
-    initializeBasket(username, setBasket)
+    await initializeMenu(username, setMenu);
+    initializeBasket(username, setBasket);
  }
