@@ -1,12 +1,15 @@
 import { theme } from "../../../../../theme";
 import styled from "styled-components";
 
-export default function EmptyBasket() {
+export default function EmptyBasket({ isLoading }) {
+
+  const basketEmptyMessage = "Votre commande est vide.";
+  const basketLoadingMesasge = "Chargement en cours ...";
 
     return (
     
     <EmptyBasketStyle>
-      <span className="empty-message">Votre commande est vide.</span>
+      <span className="empty-message">{isLoading ? basketLoadingMesasge : basketEmptyMessage}</span>
     </EmptyBasketStyle>
     
     )

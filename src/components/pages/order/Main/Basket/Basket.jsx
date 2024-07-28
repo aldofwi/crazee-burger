@@ -1,6 +1,7 @@
 import { calculateSumToPay, formatPrice } from "../../../../../utils/maths"
 import OrderContext from "../../../../../context/OrderContext"
 import { isEmpty } from "../../../../../utils/array"
+import Loader from "../MainRightSide/Menu/Loader"
 import BasketProducts from "./BasketProducts"
 import { theme } from "../../../../../theme"
 import EmptyBasket from "./EmptyBasket"
@@ -8,20 +9,18 @@ import styled from "styled-components"
 import { useContext } from "react"
 import Footer from "./Footer"
 import Total from "./Total"
-import Loader from "../MainRightSide/Menu/Loader"
 
 export default function Basket() {
 
   const { basket, menu } = useContext(OrderContext);
-
-  if(menu === undefined) return <Loader />
+  // if(menu === undefined) return <Loader />
 
   return (
     <BasketStyle>
 
         <Total />
         {isEmpty(basket) ? 
-          <EmptyBasket /> : 
+          <EmptyBasket isLoading={menu === undefined} /> : 
           <BasketProducts />}
         <Footer />
         

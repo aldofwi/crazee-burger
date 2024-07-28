@@ -34,8 +34,8 @@ export default function OrderPage() {
 
   const initializeBasket = () => { 
     const basketReceived = getLocalStorage(username); // asynchrone : no need await
-    console.log("basketReceived :", basketReceived);
-    setBasket(basketReceived);
+    // console.log("basketReceived :", basketReceived);
+    if(basketReceived) setBasket(basketReceived);
    }
 
   useEffect(() => {
