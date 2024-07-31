@@ -1,27 +1,28 @@
 import { useState } from "react";
 import { fakeBasket } from "../fakeData/fakeBasket";
 import { deepClone, findObjectById, findIndexById } from "../utils/array";
+import { setLocalStorage } from "../utils/window";
 
 export const useBasket = () => {
 
-    const [basket, setBasket] = useState(fakeBasket.EMPTY);
+    const [basket, setBasket] = useState([]);
     
     // State Handlers
-    const handleAddBasket = (idProductToAdd) => { 
+    const handleAddBasket = (idProductToAdd, username) => { 
         
         // 1. [...menu] pas de shallow copy, que en surface
         const basketCopy = deepClone(basket);
         const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy);
 
         if(productAlreadyInBasket) {
-            incrementProductAlreadyInBasket(idProductToAdd, basketCopy);
+            incrementProductAlreadyInBasket(idProductToAdd, basketCopy, username);
             return
         }
 
-        createNewProductInBasket(idProductToAdd, basketCopy, setBasket);
+        createNewProductInBasket(idProductToAdd, basketCopy, setBasket, username);
     }
 
-    const createNewProductInBasket = (idProductToAdd, someBasket, setBasket) => {
+    const createNewProductInBasket = (idProductToAdd, someBasket, setBasket, username) => {
         // Just adding extra info into basket from the menu product.
         // 2. manip de la copie du tableau
         const newBasketProduct = {
@@ -32,12 +33,14 @@ export const useBasket = () => {
 
         // 3. update du statut  
         setBasket(newBasket);
+        setLocalStorage(username, newBasket);
     }
     
-    const incrementProductAlreadyInBasket = (idProductToAdd, someBasket) => {
+    const incrementProductAlreadyInBasket = (idProductToAdd, someBasket, username) => {
         const indexOfProduct = findIndexById(idProductToAdd, someBasket);
         someBasket[indexOfProduct].quantity += 1;
         setBasket(someBasket); // 3. update du statut
+        setLocalStorage(username, someBasket);
     }
 
     const handleEditBasket = (productBeingEdited) => { 
@@ -50,9 +53,10 @@ export const useBasket = () => {
 
         // 3. update du statut
         setBasket(basketCopy);
+        //setLocalStorage(username, basketCopy);
      }
 
-    const handleDeleteBasket = (idOfDeleteProduct) => { 
+    const handleDeleteBasket = (idOfDeleteProduct, username) => { 
         // 1. [...menu] pas de shallow copy, que en surface
         const basketCopy = [...basket];
 
@@ -61,7 +65,8 @@ export const useBasket = () => {
 
         // 3. update du statut
         setBasket(basketUpdated);
+        setLocalStorage(username, basketUpdated);
     }
 
-    return {basket, handleAddBasket, handleEditBasket, handleDeleteBasket}
+    return {basket, setBasket, handleAddBasket, handleEditBasket, handleDeleteBasket}
 }

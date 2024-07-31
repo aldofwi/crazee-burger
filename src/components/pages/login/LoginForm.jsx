@@ -1,11 +1,13 @@
 import { useState, React} from 'react'
 import { useNavigate } from 'react-router-dom';
+import { authenticateUser } from '../../../api/user';
 import { IoChevronForward } from 'react-icons/io5';
 import { BsPersonCircle } from 'react-icons/bs';
 import TextInput from '../../reusable-ui/TextInput';
 import Button from '../../reusable-ui/Button';
 import styled from 'styled-components';
 import { theme } from '../../../theme';
+import Welcome from './Welcome';
 
 
 export default function LoginForm() {
@@ -13,14 +15,17 @@ export default function LoginForm() {
     const [name, setName] = useState("");
     const navigate = useNavigate();
 
-    const handleSubmit = () => { 
+    const handleSubmit = (event) => { 
+      event.preventDefault();
+
+      authenticateUser(name);
+
       navigate(`order/${name}`);
       setName("");
      }
 
     const handleName = (e) => {
         e.preventDefault();
-
         setName(e.target.value); 
     }
 
@@ -28,10 +33,7 @@ export default function LoginForm() {
     
     <LoginFormStyled action="submit" onSubmit={handleSubmit}>
 
-        <h1>Bienvenue chez nous !</h1>
-        <hr />
-        <h2>Connectez-vous</h2>
-          
+        <Welcome />
         <br />
         
         <div>

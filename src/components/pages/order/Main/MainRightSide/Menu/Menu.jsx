@@ -9,6 +9,7 @@ import { findObjectById, isEmpty } from '../../../../../../utils/array';
 import OrderContext from '../../../../../../context/OrderContext';
 import ProductCard from '../../../../../reusable-ui/ProductCard';
 import { DEFAULT_IMAGE, DEFAULT_TITLE, EMPTY_PRODUCT } from '../../../../../../enums/product';
+import Loader from './Loader';
 
 export default function Menu() {
 
@@ -19,6 +20,7 @@ export default function Menu() {
             handleDeleteMenu,
             handleAddBasket,
             handleDeleteBasket,
+            username,
             titleEditRef, 
             setIsCollapsed,
             productSelected,
@@ -39,21 +41,23 @@ export default function Menu() {
     const handleAddButton = (event, idProductToAdd) => {
         event.stopPropagation();
         
-        handleAddBasket(idProductToAdd);
+        handleAddBasket(idProductToAdd, username);
     }
 
     const handleCardDelete = (event, idProductToDelete) => { 
         event.stopPropagation();
 
-        handleDeleteMenu(idProductToDelete);
-        handleDeleteBasket(idProductToDelete);
+        handleDeleteMenu(idProductToDelete, username);
+        handleDeleteBasket(idProductToDelete, username);
         idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT);
     }
 
     // Affichage
+    if(!menu) return <Loader />
+
     if(isEmpty(menu)) {
         if(!isModeAdmin) return <EmptyMenuClient />
-        return <EmptyMenuAdmin onReset={resetMenu} />
+        return <EmptyMenuAdmin onReset={() => resetMenu(username)} />
     }
 
   return (

@@ -10,6 +10,7 @@ export default function BasketProducts() {
 
     const { menu, 
             basket, 
+            username,
             isModeAdmin, 
             titleEditRef, 
             setIsCollapsed, 
@@ -30,7 +31,7 @@ export default function BasketProducts() {
 
     const handleOnDelete = (event, id) => {
         event.stopPropagation();
-        handleDeleteBasket(id);
+        handleDeleteBasket(id, username);
     }
 
   return (

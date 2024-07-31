@@ -7,6 +7,9 @@ import styled from 'styled-components';
 import Navbar from './Navbar/Navbar';
 import Main from './Main/Main';
 import { useBasket } from '../../../hooks/useBasket';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { initializeUserSession } from './helpers/initializeUserSession';
 
 export default function OrderPage() {
 
@@ -17,11 +20,20 @@ export default function OrderPage() {
   const [newProduct, setNewProduct]   = useState(EMPTY_PRODUCT);
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const {username} = useParams();
 
-  const {menu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu} = useMenu();
-  const {basket, handleAddBasket, handleEditBasket, handleDeleteBasket} = useBasket();
+  const {menu, setMenu, handleAddMenu, handleEditMenu, handleDeleteMenu, resetMenu} = useMenu();
+  const {basket, setBasket, handleAddBasket, handleEditBasket, handleDeleteBasket} = useBasket();
+
+  useEffect(() => {
+    initializeUserSession(username, setMenu, setBasket);
+  }, []);
+
+  useEffect(() => {}, [])
+  
 
   const orderContextValue = {
+    username,
     isModeAdmin,
     setIsModeAdmin,
     isCollapsed,

@@ -4,7 +4,7 @@ import { getInputTextsConfig } from "./inputTextConfig";
 import TextInput from "../../../../../../reusable-ui/TextInput";
 import React from "react";
 
-const Form = React.forwardRef(({ product, onSubmit, onChange, children }, ref) => {
+const Form = React.forwardRef(({ product, onSubmit, onChange, onFocus, onBlur, children }, ref) => {
 
   const inputTexts = getInputTextsConfig(product);
 
@@ -19,6 +19,8 @@ const Form = React.forwardRef(({ product, onSubmit, onChange, children }, ref) =
               key={input.id}
               {...input} // Déstructuration de nos inputs.
               onChange={onChange}
+              onFocus={onFocus}
+              onBlur={onBlur}
               version="minimalist"
               ref={ref && input.name === "title" ? ref : null}
           />) }

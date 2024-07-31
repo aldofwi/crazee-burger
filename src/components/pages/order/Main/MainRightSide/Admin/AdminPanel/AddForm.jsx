@@ -8,7 +8,7 @@ import { replaceFrenchCommaWithDot } from "../../../../../../../utils/maths";
 
 export default function AddForm() {
 
-  const { handleAddMenu, newProduct, setNewProduct } = useContext(OrderContext);
+  const { username, handleAddMenu, newProduct, setNewProduct } = useContext(OrderContext);
   const {isSubmitted, displaySuccessMsg} = useSuccessMsg(3000); // Custom Hook
 
   const handleSubmit = (event) => { 
@@ -19,7 +19,7 @@ export default function AddForm() {
         id: crypto.randomUUID(),
         price: replaceFrenchCommaWithDot(newProduct.price),
       }
-    handleAddMenu(newProduitToAdd);
+    handleAddMenu(newProduitToAdd, username);
     setNewProduct(EMPTY_PRODUCT);
     displaySuccessMsg();
   }
